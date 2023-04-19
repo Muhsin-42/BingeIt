@@ -1,0 +1,122 @@
+.login{
+
+    height: 100vh;
+    background-color: rgb(193, 190, 255);
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .loginCard{
+        box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.2); 
+        @media (max-width:1200px){
+            width: 70%;
+        }
+        @media (max-width:950px){
+            width: 90%;
+        }
+        @media(max-width : 700px){
+            width: 70%;
+        }
+        @media(max-width : 400px){
+            width: 90%;
+        }
+        
+
+        background-color: white;
+        display: flex;
+        width: 50%;
+        border-radius: 10px;
+        overflow: hidden;
+        min-height: 500px;
+
+
+
+
+        .left{
+            @media (max-width: 700px){
+                display: none;
+            }
+
+            flex: 1;
+
+            background: linear-gradient(rgba(39,11,96,0.5),rgba(39,11,96,0.5)) , url('https://i.pinimg.com/564x/09/a5/73/09a573ede3f8ae84c6f8657a50f8722d.jpg') ;
+            background-size: cover;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: white;
+
+            h1{
+                margin: 0;
+                font-size: 80px;
+                line-height: 100px;
+            }
+            p{
+                margin: 0;
+            }
+            span{}
+            button{
+                background-color: white;
+                color: rebeccapurple;
+                font-weight: bold;
+            }
+        }
+
+        .right{
+
+            @media (max-width: 600px) {
+                padding: 20px;
+            }
+
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 50px;
+
+            h1{}
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                input{
+                    border: none;
+                    border-bottom: 1px solid lightgray;
+                    padding: 20px 10px;
+                }
+                input:focus{
+                    outline: none;
+                }
+                button{
+                    width: 100%;
+                    padding: 10px;
+                    background-color: rebeccapurple;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+            span{
+                @media (min-width: 700px) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+.alerts{
+    position: absolute;
+    top: 10px; 
+    right:10px;
+}

@@ -1,0 +1,41 @@
+.UserRowMain{
+    display: flex;
+    justify-content: center;
+}
+
+.userRow{
+    background-color: rgba(34, 34, 34, 0.747) !important;
+    color : white;
+    width: 75%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    img{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+    .left{
+        padding: 5px 0 5px 10px;
+        // background: #000;
+        display: flex;
+        flex-direction: row !important;
+    }
+    .right{
+        padding-right: 20px;
+    }
+    .nameUsername{
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.userRow:hover{
+    transform: scale(1.09);
+    transition: 0.3s;
+}

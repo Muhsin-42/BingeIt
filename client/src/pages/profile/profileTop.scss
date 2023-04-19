@@ -1,0 +1,157 @@
+#profile{
+    width: 100%;
+    .profilePics{
+        @media (max-width: 1100px ) {
+            height: 200px;
+        }
+
+        width: 100%;
+        height: 268px;
+
+        .bgPic{
+            @media (max-width: 1100px ) {
+                height: 200px;
+            }
+
+
+
+            width: 100%;
+            height: 268px;
+            background-position: center;
+            position: relative;
+            #editIcon{
+                position: absolute;
+                bottom: 10px;
+                right: 20px;
+                font-size: xx-large;
+            }
+        }
+        .profile-pic{
+            @media (max-width: 1100px ) {
+                height: 150px;
+                width: 150px;
+                left: 30px;
+            }
+            border-radius: 50%;
+            position: relative;
+            top: -100px;
+            left: 20px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); 
+            overflow: hidden;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            img{
+                @media (max-width: 1100px ) {
+                    height: 150px;
+                    width: 150px;
+                }
+                position: absolute;
+                border-radius: 50%;
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+    }
+    .nameUsernameFollow{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 60%;
+        margin: auto;
+    }
+    .left{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+    }
+    .right{
+
+        right: 200px;
+    }
+    .name{
+        min-width: max-content;
+        @media (max-width: 1250px ) {
+            margin-left: 30%;
+        }
+        @media (max-width: 850px ) {
+            text-align: justify;
+            margin-top: 50px;
+        }
+
+        // margin-left: 22%;
+
+        font-weight: bold;
+        color: rgb(77, 74, 74);
+    }
+    .username{
+        @media (max-width: 1250px ) {
+            margin-left: 30%;
+        }
+
+        // margin-left: 22%;
+        color: rgb(122, 118, 118);
+    }
+    .infoBar{
+        overflow: hidden;
+        width: 70%;
+        margin: auto;
+        border-radius: 18px;
+        border: none;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); 
+        overflow: hidden;
+        div{
+            border: 0;
+            border-left: 1px;
+            border-color: white !important;
+            border-style: solid;
+        }
+        .col{
+            background-color: #272727; 
+            color : white;
+            padding: 30px 0px;
+            font-weight: bold;
+            font-size: large;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .col:hover{
+            background-color: #3d3d3d;
+            transform: scale(1.2);
+            transition: 0.4s;
+        }
+    }
+}
+
+
+
+
+.edit-layout{
+    position: absolute !important;
+    z-index: 9999 !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    bottom: 0;
+    text-align: center;
+    height:50px;
+    width: 100% !important;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    display: none !important;
+    i{
+        font-size: 30px;
+        color: white ;
+    }
+    
+}
+.profile-pic:hover .edit-layout {
+    display: inline-block !important; 
+    opacity: 1;
+  }
+
+
+//////////////////////////
+/// /////////////////////

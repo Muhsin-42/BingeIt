@@ -1,0 +1,30 @@
+.trending{
+
+    h1{
+        background: rgb(131,58,180);
+        background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 46%, rgba(252,69,171,1) 100%);
+        color: #FDC300;
+        padding: 10px;
+    }
+
+    .moviePosters{
+        
+        // background-color: aqua !important;
+        align-items: center;
+        justify-content: center;
+
+        .moviePoster{
+            box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.2); 
+            max-height: 250px;
+            margin-right: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .moviePoster:hover{
+            transform: scale(1.09);
+            filter: brightness(0.8);
+            transition: 0.3s;
+        }
+    }
+}

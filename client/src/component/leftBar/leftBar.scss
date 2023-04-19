@@ -1,0 +1,86 @@
+.safetyLeftBar{
+    @media (max-width: 790px) {
+        display: none;
+    }
+    // width: 305px;
+    height: max-content;
+    min-height: max-content;
+}
+.leftBar::-webkit-scrollbar{
+    display: none;
+}
+
+.leftBar{
+//    background-color: #272727; 
+//    background-color: #1A1A1A; 
+   background-color: #000101; 
+   height: 100vh;
+   width: 250px;
+   float: left;
+   position: fixed;
+   z-index: 22;
+    left: 0;
+    top: 0;
+    bottom: 0;
+   overflow-x: hidden;
+
+   .logoDiv{
+        width: fit-content;
+        margin: auto;
+        img{
+            height: 100px;
+            width: 100px;
+        }
+        h2{ 
+            text-align: center;
+            color : white
+        }
+    }
+    .line{
+        height: 1px;
+        width: 80%;
+        margin: auto;
+        background-color: white;
+        display: block;
+    }
+
+
+    // search Bar
+    .searchBar{
+        border : none;
+        border-radius: 20px;
+        // margin: auto;
+        padding: 10px;
+    }
+    #searchSvg{
+        position: relative;
+        left : -50px;
+    }
+
+
+    ul{
+        color: white;
+        list-style: none;
+        li{
+            .link{
+                color: white;
+                text-decoration: none;
+            }
+            cursor: pointer;
+            font-size: larger;
+            font-weight: bold;
+            line-height: 50px;
+            i,.icons{
+                margin-right: 10px;
+                font-size: 24px;
+                line-height: 24px;
+                font-weight: bolder;
+            }
+        }
+        li:hover{
+            transform: scale(1.059);
+            transition: 0.3s;
+        }
+    }
+
+}

@@ -1,0 +1,23 @@
+.reply-card{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    .left{
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+    .right{
+        width: 100%;
+        padding: 0px 20px;
+        .level1{
+            display: flex;
+            justify-content: space-between;
+        }
+        .level2{
+
+        }
+    }
+}

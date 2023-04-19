@@ -1,0 +1,97 @@
+.reviewCardMain{
+    width: 75%;
+    margin: auto;
+}
+
+.review{
+    display: flex;
+    background-color: rgba(34, 34, 34, 0.747);
+    margin: 20px auto ;
+    // width: 70%;
+    color: white;
+    .left{
+        padding: 10px 0 0 20px;
+        img{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+    .right{
+        padding: 10px 20px;
+        .set1{
+            display: flex;
+            justify-content: space-between;
+        }
+        .set2{
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .set3{
+            overflow-wrap: break-word;
+        }
+        .set4{
+            display: flex;
+            // background-color: red;
+            justify-content: space-between;
+            .icons{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.replyMain{
+    padding-top: 1px;
+    .add-reply-main{
+        width: 70%;
+        margin-top: 30px;
+        margin: 20px auto;
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        input{
+            background-color: #32373C;
+            font-weight: 500;
+            color: white;
+            padding: 8px 20px;
+            font-size: large;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+        }
+        input:focus{
+            outline: none;
+        }
+        button{
+            margin: auto;
+        }
+    }
+    .reply-card{
+        width: 70%;
+        margin: auto;
+        display: flex;
+        .left{
+            img{
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+            }
+        }
+        .right{
+            width: 100%;
+            padding: 0px 20px;
+            .level1{
+                display: flex;
+                justify-content: space-between;
+            }
+            .level2{
+
+            }
+        }
+    }
+}

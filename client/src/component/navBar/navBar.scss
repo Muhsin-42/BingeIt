@@ -1,0 +1,57 @@
+.navBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    @media (min-width: 790px) {
+        transition: 1.5s;
+        display: none;
+    }
+    div{
+
+        i{
+            font-size: 30px;
+            cursor: pointer;
+        }
+        i:hover{
+            transform: scale(1.099);
+            transition: 0.4s;
+        }
+    }
+    ul{
+        color: white;
+        list-style: none;
+        li{
+            z-index: 2;
+            // border-style:  solid;
+            // border-top: 0;
+            // border-left: 0;
+            // border-right: 0;
+            border-color: white;
+            margin-right: 50px;
+
+            font-size: larger;
+            font-weight: bold;
+            line-height: 50px;
+            i{
+                margin-right: 10px;
+                font-size: 24px;
+                line-height: 24px;
+                font-weight: bolder;
+            }
+        }
+        li:hover{
+            transform: scale(1.059);
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: #191c1f;
+        }
+    }
+}
+.logo{
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    padding: 10px;
+}

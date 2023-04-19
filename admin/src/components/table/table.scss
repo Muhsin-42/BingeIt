@@ -1,0 +1,50 @@
+.table {
+
+  .cellWrapper {
+    display: flex;
+    align-items: center;
+
+    .image {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+  }
+
+  .status {
+    padding: 5px;
+    border-radius: 5px;
+
+    &.Approved {
+      color: green;
+      background-color: rgba(0, 128, 0, 0.151);
+    }
+    &.Pending {
+      color: goldenrod;
+      background-color: rgba(189, 189, 3, 0.103);
+    }
+  }  
+
+}
+
+
+.tablemain{
+  .search {
+    display: flex;
+    align-items: center;
+    border: 0.5px solid lightgray;
+    padding: 15px;
+    margin: 15px 0;
+    input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 95%;
+      &::placeholder {
+        font-size: 12px;
+      }
+    }
+  }
+}
