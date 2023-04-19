@@ -17,7 +17,8 @@ const ChatPage = () => {
   const dispatch = useDispatch();
   const chatContainerRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
-  const [selectedCommunity, setSelectedCommunity] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState([]);
+  const [selectedGroupIndex, setSelectedGroupIndex] = useState(0);
 
 
   function handleInputChange(event) {
@@ -31,7 +32,7 @@ const ChatPage = () => {
       let newMessage = {
         fromSocket: true,
         senderId: currentUser._id,
-        selectedCommunity: selectedCommunity._id,
+        selectedCommunity: selectedGroup._id,
         _id: formattedTime,
         type: 'text',
         text: inputValue,
@@ -43,20 +44,19 @@ const ChatPage = () => {
         }
       }
       let tempMessages = {
-        ...selectedCommunity,
-        messages: [...selectedCommunity.messages, newMessage]
+        ...selectedGroup,
+        messages: [...selectedGroup.messages, newMessage]
       };
-
       dispatch(pushMessages({newMessage}))
-      // socket.emit("sendMessage", newMessage )
-      // 
+
+      setSelectedGroup(tempMessages);
+      socket.emit("sendMessage", newMessage ) 
 
 
-      // setSelectedCommunity(tempMessages);
       let text = inputValue;
       setInputValue("");
 
-      const response = await axios.post(`api/chat/${selectedCommunity._id}/messages`, { userId: currentUser._id, text: text }
+      await axios.post(`api/chat/${selectedGroup._id}/messages`, { userId: currentUser._id, text: text }
         , {
           headers: {
             'Content-type': 'application/json',
@@ -69,11 +69,10 @@ const ChatPage = () => {
   // To Scroll
   useEffect(() => {
     chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-  }, [selectedCommunity]);
+  }, [selectedGroup]);
 
 
   const getAllCommunities = async () => {
-    console.log('getall')
     const response = await axios.get('api/chat/group', {
       headers: {
         'Content-type': 'application/json',
@@ -89,20 +88,18 @@ const ChatPage = () => {
 
 
 
-  // useEffect(() => {
-  //   socket.on("receiveMessage", (data) => {
-  //     console.log('data', data.selectedCommunity)
-  //     console.log('sele id ', selectedCommunity._id)
+  useEffect(() => {
+    socket.on("receiveMessage", (data) => {   
+      dispatch(pushMessages({newMessage : data}))
+    });
+  }, [selectedGroup]);
 
-  //     let tempMessages = {
-  //       ...selectedCommunity,
-  //       messages: [...selectedCommunity.messages, data]
-  //     };
-  //     setSelectedCommunity((prev) => tempMessages);
 
-  //   });
-  // }, []);
 
+  useEffect(()=>{
+    setSelectedGroup(groups[selectedGroupIndex?selectedGroupIndex:0]);
+  },[groups]);
+  
 
 
   return (
@@ -113,9 +110,9 @@ const ChatPage = () => {
         <div className="channels">
           {
             groups &&
-            groups.map((group) => {
+            groups.map((group,index) => {
               return (
-                <div className="singleChannel" key={group._id} onClick={() => { setSelectedCommunity(prev => group) }}>
+                <div className="singleChannel" key={group._id}  onClick={() => { setSelectedGroup(group); setSelectedGroupIndex(index) }}>
                   <div className="img" style={{  height: '50px',  width: '50px',  backgroundImage: `url(${group.image})`,  backgroundSize: 'cover',  borderRadius: '50%'}}></div>
                   <span className='d-block'>#{group.name}</span>
                 </div>
@@ -132,9 +129,9 @@ const ChatPage = () => {
         <div className="chat-container">
 
 
-          <div className="chat-header fs-3 font-weight-bold">#{selectedCommunity?.name}</div>
+          <div className="chat-header fs-3 font-weight-bold">#{selectedGroup?.name}</div>
           <div className="chat-content" ref={chatContainerRef}>
-            {selectedCommunity?.messages?.map((message) => (
+            {selectedGroup?.messages?.map((message) => (
 
               <MessagesSection key={message._id} message={message} />
 

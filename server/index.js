@@ -71,7 +71,8 @@ module.exports = io;
 
     socket.on("sendMessage",(data)=>{
       console.log('data ',data)
-      io.emit('receiveMessage',data);
+      // io.emit('receiveMessage',data);
+      socket.broadcast.emit('receiveMessage', data);
     })
 
 
