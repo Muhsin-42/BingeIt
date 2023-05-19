@@ -4,12 +4,14 @@ import {API_KEY, imageUrl} from '../../utils/constants'
 import axios from '../../movieApi/axios'
 import { useNavigate } from 'react-router-dom'
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 function RowMovies({movies,title}) {
   const Navigate = useNavigate();
 
   const handleMovieClick = (movie) =>{
-    console.log('clclcl')
     Navigate(`/movie/${movie.title}/${movie.id}`);
   }
 
@@ -20,7 +22,7 @@ function RowMovies({movies,title}) {
       {
         movies?.map((movie)=>{
           return (
-          <img  className='poster' key={movie.id} onClick={()=>handleMovieClick(movie)} src={imageUrl + movie.poster_path } alt="Movie poster" />
+          <LazyLoadImage effect='blur' className='poster' key={movie.id} onClick={()=>handleMovieClick(movie)} src={imageUrl + movie.poster_path } alt="Movie poster" />
           )
         })
       }
@@ -33,7 +35,6 @@ function RowMovies({movies,title}) {
         ):('')
       }
     </div>
-    {/* { urlId &&   <YouTube opts={opts} videoId={urlId.key} />  } */}
 </div>
   )
 }

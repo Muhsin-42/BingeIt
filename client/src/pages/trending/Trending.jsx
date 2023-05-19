@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios  from '../../movieApi/axios'
-// import axios from 'axios'
 import './trending.scss'
 import { API_KEY,imageUrl } from '../../utils/constants'
 import { useNavigate } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Trending() {
   const [movies, setMovies] = useState([]);
@@ -72,7 +73,7 @@ function Trending() {
                 movies.map((movie)=>{
                         if(handleRenderedIds(movie.id)){
                             return(
-                                <img  key={movie.id}  onClick={()=> handleMovieClick(movie)}   className='moviePoster cold dol-lg-2 ' src={imageUrl + movie.poster_path } alt="" />
+                                <LazyLoadImage effect='blur'  key={movie.id}  onClick={()=> handleMovieClick(movie)}   className='moviePoster cold dol-lg-2 ' src={imageUrl + movie.poster_path } alt="" />
                             )
                         }
                 })

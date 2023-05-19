@@ -15,7 +15,6 @@ const adminController = {
     AdminSignup: async (req, res) => {
     try {
       const { error } = validate(req.body);
-      console.log(error)
       if (error)
         return res.status(401).send({ message: error.details[0].message });
 
@@ -55,7 +54,6 @@ const adminController = {
     },
     verifyEmail: async(req,res)=>{
       try{
-        console.log('5444444')
         const user = await User.findOne({_id: req.params.id});
         if(!user) return res.status(400).send({message: "Invalid link"})
 
@@ -80,17 +78,13 @@ const adminController = {
 
 
     adminLogin:  async (req, res) => {
-      console.log('ehjeejej')
       try {
         var { error } = Loginvalidate(req.body);
-        console.log('error 202',error)
         if (error)
           return res.status(400).send({ message: error.details[0].message });
         
-        console.log('error 206 ',req.body.email)
 
         var admin = await Admin.findOne({ email: req.body.email });
-        console.log(admin)
         if (!admin)
           return res.status(401).send({ message: "Invalid Email or Password" });
 
@@ -103,7 +97,6 @@ const adminController = {
 
         res.status(200).json({ token, user: admin });
       } catch (error) {
-        console.log('102 =>' ,error)
         res.status(500).send({ message: "Internal Server Error",error });
       }
 
@@ -113,15 +106,12 @@ const adminController = {
       try {
         const authHeader = req.headers.authorization;
         const Token = authHeader ? authHeader.split(' ')[1].trim() : null;
-        console.log(`trrrrrrr${Token}`);
         const decoded = jwt.verify(Token, process.env.JWT_SECRET_KEY);
-        console.log('eeeeooofcc')
         const email = decoded.email;
         const user = await User.findOne({ email: email });
         next();
         // return res.status(200).json({ message: "token valid", user });
       } catch (error) {
-        console.log('errrrrrrr ',error);
         res.json({ status: "error", error: "invalid token" });
       }
     },
@@ -135,12 +125,10 @@ const adminController = {
             const users = await User.find();
             res.status(200).json(users)
         } catch (error) {
-          console.log('get all users error => ',error)
           res.status(500)
         }
     },
     getSearchUsers : async(req,res)=>{
-      console.log('getSearchUsers')
         try {
           const regex = new RegExp(req.params.keyword, 'i');
           const users = await User.find({
@@ -150,15 +138,12 @@ const adminController = {
               { email: regex },
             ],
           });
-            console.log(users)
             res.status(200).json(users)
         } catch (error) {
-          console.log('get all users error => ',error)
           res.status(500)
         }
     },
     getAllReviews : async(req,res)=>{
-      console.log('getttReviews')
       try {
           const reviews = await ReviewsModel.find()
           .populate('userId', 'username name profilePicture')
@@ -167,7 +152,6 @@ const adminController = {
           
           res.status(200).json(reviews);
       } catch (error) {
-          console.log('GetAllPosts error ',error) 
           res.status(500);
       }
     },
@@ -228,34 +212,29 @@ const adminController = {
           }
         ]);
     
-        console.log("reports", reports);
         res.status(200).json(reports);
       } catch (err) {
-        console.log('getAllreport error => ', err)
+        res.status(500).json(reports);
       }
     },
     
 
 
     blockUser : async(req,res) =>{
-      console.log('blockUser');
       try {
         const userId = Object(req.params.id);
         const result = await User.findByIdAndUpdate( userId,{$set:{isActive:false}},{new:true});
         res.status(200).json({msg:'user Blocked'});
       } catch (error) {
-        console.log('blockUser Error => ',error);
         res.status(500).json({msg:'error blocking user'+error});
       }
     },
     unblockUser : async(req,res) =>{
-      console.log('unblockUser');
       try {
         const userId = Object(req.params.id);
         const result = await User.findByIdAndUpdate( userId,{$set:{isActive:true}},{new:true});
         res.status(200).json({msg:'user unBlocked'});
       } catch (error) {
-        console.log('unblockUser Error => ',error);
         res.status(500).json({msg:'error unblocking user'+error});
       }
     }

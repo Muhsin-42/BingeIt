@@ -39,7 +39,6 @@
                         'Authorization': `Bearer ${token}`,
                     },
                 });
-                console.log(response.data);
             } catch (error) {
                 
             }

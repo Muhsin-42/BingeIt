@@ -27,7 +27,6 @@ const postsController = {
           
           res.status(201).json(populatedPost);
       } catch (error) {
-          console.log(error);
           res.status(404).json({ message: error.message });
       }
     },
@@ -38,7 +37,6 @@ const postsController = {
             
             res.status(200).json(deletedPost);
         }catch(error){
-            console.log('deletePost error ',error);
             res.status(500);
         }
     },
@@ -57,7 +55,6 @@ const postsController = {
             
             res.status(200).json(posts)
         } catch (error) {
-            console.log('GetAllPosts error ',error)
             res.status(500);
         }
     },
@@ -91,7 +88,6 @@ const postsController = {
 
             res.status(200).json(updatedPost);
         }catch(error){
-            console.log('postLikes error ',error)
             res.status(500);
         }
     },
@@ -125,7 +121,6 @@ const postsController = {
     
             res.status(201).json(populatedPost);
         }catch(error){
-            console.log('addComment => ',error);
             res.status(500);
         }
     },
@@ -156,7 +151,6 @@ const postsController = {
       
           res.status(200).json({msg:'Reported the post'});
         } catch (error) {
-          console.log(error);
           res.status(500).json({ message: 'Something went wrong' });
         }
     }

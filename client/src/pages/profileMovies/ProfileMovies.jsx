@@ -9,39 +9,39 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 
-function ProfileMovies({friend}) {
+function ProfileMovies({ friend }) {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.user);
   const token = useSelector(state => state.token);
-  const {id} = useParams();
+  const { id } = useParams();
   // let movies = [];
-  const [watchedMovies,setWatchedMovies] = useState([])
-  const [wishlistMovies,setWishlistMovies] = useState([])
-  const [favouriteMovies,setFavouriteMovies] = useState([])
-  const [profileUser,setProfileUser] = useState({});
+  const [watchedMovies, setWatchedMovies] = useState([])
+  const [wishlistMovies, setWishlistMovies] = useState([])
+  const [favouriteMovies, setFavouriteMovies] = useState([])
+  const [profileUser, setProfileUser] = useState({});
 
 
 
   const getUser = async () => {
     try {
-        const response  = await axios.get(`api/user/user/${id}`, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${token}`,
-            },
-        })
-        setProfileUser(response.data);
+      const response = await axios.get(`api/user/user/${id}`, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+      setProfileUser(response.data);
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
-}
+  }
 
-  const getAllWatchedMovie = async ()=>{
-    if(profileUser){
+  const getAllWatchedMovie = async () => {
+    if (profileUser) {
       let movies = [];
       for (let i = 0; i < profileUser?.watched?.length; i++) {
         const movieId = profileUser?.watched[i];
-    
+
         try {
           const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`);
           const movie = response.data;
@@ -53,12 +53,12 @@ function ProfileMovies({friend}) {
       setWatchedMovies(movies);
     }
   }
-  const getAllFavouriteMovie = async ()=>{
-    if(profileUser){
+  const getAllFavouriteMovie = async () => {
+    if (profileUser) {
       let movies = [];
       for (let i = 0; i < profileUser?.favourite?.length; i++) {
         const movieId = profileUser.favourite[i];
-    
+
         try {
           const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`);
           const movie = response.data;
@@ -70,17 +70,16 @@ function ProfileMovies({friend}) {
       setFavouriteMovies(movies);
     }
   }
-  const getAllWishlistMovie = async ()=>{
-    if(currentUser){
+  const getAllWishlistMovie = async () => {
+    if (currentUser) {
       let movies = [];
       for (let i = 0; i < profileUser?.wishlist?.length; i++) {
         const movieId = profileUser?.wishlist[i];
-    
+
         try {
           const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`);
           const movie = response.data;
           movies.unshift(movie);
-          // console.log('resssss =>',watchedMovies)
         } catch (error) {
           console.log(`Error fetching details for movie ID ${movieId}:`, error);
         }
@@ -89,28 +88,28 @@ function ProfileMovies({friend}) {
     }
   }
 
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     getUser();
     getAllWatchedMovie();
     getAllWishlistMovie();
     getAllFavouriteMovie();
-    
-  },[id])
-  useEffect(()=>{
+
+  }, [id])
+  useEffect(() => {
     getAllWatchedMovie();
     getAllWishlistMovie();
     getAllFavouriteMovie();
-  },[profileUser,id])
+  }, [profileUser, id])
 
 
 
 
   return (
     <div className='profileMovies p-3 '>
-        <RowMovies  title='Recently Watched'  movies={watchedMovies}></RowMovies>
-        <RowMovies  title='Watchlist'  movies={wishlistMovies}></RowMovies>
-        <RowMovies  title='Favourite'  movies={favouriteMovies}></RowMovies>
+      <RowMovies title='Recently Watched' movies={watchedMovies}></RowMovies>
+      <RowMovies title='Watchlist' movies={wishlistMovies}></RowMovies>
+      <RowMovies title='Favourite' movies={favouriteMovies}></RowMovies>
     </div>
   )
 }

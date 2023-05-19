@@ -15,14 +15,12 @@ function ReviewSection({movieDetails,currentUser}) {
 
     const getReviews =async ()=>{
         try {
-            console.log('**********************')
             const response = await axios.get(`api/user/review/${movieDetails.id}`, {
               headers: {
                   "Content-Type": "application/json",
                   'Authorization': `Bearer ${token}`,
               },
           })
-            console.log('reswoswe => ',response.data)
             dispatch(setReviews({reviews: response.data }));
         } catch (error) {
             console.log('344 => ',error)
@@ -56,7 +54,6 @@ function ReviewSection({movieDetails,currentUser}) {
     }
 
     useEffect(()=>{
-        console.log('movivivi ',movieDetails)
         movieDetails && getReviews();
     },[movieDetails]);
 
@@ -66,9 +63,7 @@ function ReviewSection({movieDetails,currentUser}) {
                 <div className="reviewTop">
                         <span className=' fs-1 text-white'>Reviews ({reviews?.length})</span>
                         <AddReview movieDetails={movieDetails} ></AddReview>
-                    {
-                        reviews? console.log('reviews = ',reviews):''
-                    }
+                  
                 </div>
                 <div className="reviewCards">
                     {

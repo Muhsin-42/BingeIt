@@ -22,7 +22,6 @@ const TheaterTable = () => {
   var heelo = useCallback(
     () => {
     axios.get('http://localhost:1000/api/admin/getAllTheater').then((response) => {
-      console.log(response.data,"getCompaniesInfo Applocation");
       setInfo(response.data);
     });
   }

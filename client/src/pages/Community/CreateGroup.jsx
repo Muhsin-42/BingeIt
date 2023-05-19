@@ -95,7 +95,7 @@ const CreateGroup = () => {
 
     useEffect(() => {
         if (imageUpload) {
-            const fileExtension = files[0].type.split('/').pop();
+            const fileExtension = files[0]?.type.split('/').pop();
             const uploadImageName = `${v4()}.${fileExtension}`;
 
             const imageRef = ref(storage, `community-dp/${uploadImageName}`)
@@ -113,7 +113,6 @@ const CreateGroup = () => {
 
 
     const createGroupPost = async (uploadImageName) => {
-        console.log('url => ', uploadImageName)
         try {
             const result = await axios.post(`api/chat/group`, 
                     {   image: uploadImageName,
@@ -127,11 +126,9 @@ const CreateGroup = () => {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            console.log(' ss post ', result.data)
             notifySuccess();
             setLoading(false);
             setOpen(false);
-            console.log('groups ',groups)
             dispatch(setGroups({ groups: [result.data, ...groups ] }));
             // dispatch(addGroup({newGroup : response.data}))
 

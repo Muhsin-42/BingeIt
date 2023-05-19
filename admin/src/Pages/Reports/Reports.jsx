@@ -39,7 +39,6 @@ function PostsList() {
     useState(()=>{
         getAllReports();
     },[])
-    console.log('rep ',reports)
   return (
     <div className="home">
     <Sidebar />

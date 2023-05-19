@@ -3,6 +3,8 @@ import './homeMovieRow.scss'
 import {API_KEY, imageUrl} from '../../utils/constants'
 import axios from '../../movieApi/axios'
 import { useNavigate } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function RowMovies(props) {
 
@@ -38,7 +40,7 @@ function RowMovies(props) {
       {
         movies.map((movie)=>{
           return (
-          <img  onClick={()=> handleMovieClick(movie)} className='poster' key={movie.id} src={imageUrl + movie.poster_path } alt="Movie poster" />
+          <LazyLoadImage effect='blur' onClick={()=> handleMovieClick(movie)} className='poster' key={movie.id} src={imageUrl + movie.poster_path } alt="Movie poster" />
           )
         })
       }

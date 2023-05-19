@@ -21,7 +21,6 @@ function Watchlist() {
               const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`);
               const movie = response.data;
               movies.unshift(movie);
-              // console.log('resssss =>',watchedMovies)
             } catch (error) {
               console.log(`Error fetching details for movie ID ${movieId}:`, error);
             }

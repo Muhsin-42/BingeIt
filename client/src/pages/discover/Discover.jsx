@@ -56,7 +56,6 @@ function Discover() {
     const handleScroll = () => {
       if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
           if (currentPage < totalPages) {
-            console.log('599 => ',currentPage)
               setCurrentPage((currentPage)=> currentPage + 1);
           }
       }

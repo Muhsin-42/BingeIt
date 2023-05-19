@@ -18,7 +18,6 @@ function Notification() {
 
   useEffect(() => {
     socket.on("getNotification", (data) => {
-      console.log('Notif ication getNotification ',data)
         setSocketNotification(data);
     });
   }, []);
@@ -42,7 +41,6 @@ function Notification() {
             },
         });
           setNotifications(response.data)
-          console.log('seen ',response.data)
       }catch(error){
         console.log('makeNotificationError => ',error);
       }
@@ -50,7 +48,6 @@ function Notification() {
 
   const getNotifications = async () => {
     try {
-      console.log('getNotification')
       const response = await axios.get(`api/notification/notifications/${currentUserRedux._id}`, {
         headers: {
           "Content-Type": "application/json",

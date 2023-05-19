@@ -12,6 +12,8 @@ import kannada from '../../assets/images/languages/kanada.jpg'
 import tamil from '../../assets/images/languages/tamil.jpg'
 import telgu from '../../assets/images/languages/telgu.jpg'
 import marathi from '../../assets/images/languages/marathi.jpg'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 // import RowMovies from '../../component/rowMovies/RowMovies'
 import HomeMOvieRow from './HomeMovieRow'
 import { Link } from 'react-router-dom'
@@ -27,22 +29,22 @@ function Explore() {
         <h1 className='m-4 mb-0' >Watch in your Languages</h1>
         <div className="languages p-2">
             <Link to='/language/en'>
-              <img className='m-2' src={english} alt="" />
+              <LazyLoadImage effect='blur' className='m-2' src={english} alt="" />
             </Link>
             <Link to='/language/hi'>
-              <img className='m-2' src={hindi} alt="" />
+              <LazyLoadImage effect='blur' className='m-2' src={hindi} alt="" />
             </Link>
               <Link to='/language/ml'>
-            <img className='m-2' src={malayalam} alt="" />
+            <LazyLoadImage effect='blur' className='m-2' src={malayalam} alt="" />
             </Link>
             <Link to='/language/kn'>
-              <img className='m-2' src={kannada} alt="" />
+              <LazyLoadImage effect='blur' className='m-2' src={kannada} alt="" />
             </Link>
             <Link to='/language/ta'>
-              <img className='m-2' src={tamil} alt="" />
+              <LazyLoadImage effect='blur' className='m-2' src={tamil} alt="" />
             </Link>
             <Link to='/language/te'>
-              <img className='m-2' src={telgu} alt="" />
+              <LazyLoadImage effect='blur' className='m-2' src={telgu} alt="" />
             </Link>
         </div>
 

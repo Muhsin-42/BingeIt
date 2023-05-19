@@ -113,7 +113,7 @@ useEffect(()=>{
             </Link>
           </li>
           <li>
-            <Link className="link" to='chat' >
+            <Link className="link" to='community' >
               <Diversity3Icon className='icons'/>
               Community
             </Link>

@@ -1,7 +1,6 @@
 var Joi = require("joi");
 
 var Loginvalidate = function(data) {
-  console.log('data = ',data)
   var schema = Joi.object({
     email: Joi.string().email().required().label("email"),
     password: Joi.string().required().label("password"),

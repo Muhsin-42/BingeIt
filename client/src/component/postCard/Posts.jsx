@@ -18,7 +18,6 @@ function Posts() {
                     "Authorization" :  `Bearer ${token}`
                 }
             });
-            console.log('posts = ',response.data)
             dispatch(setPosts({posts:response.data}));
         }catch(error){
             console.log('getAllPosts Error => ',error);

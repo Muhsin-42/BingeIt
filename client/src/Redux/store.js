@@ -56,7 +56,6 @@ export const authSlice = createSlice({
         },
         pushMessages: (state, action) => {
             const message = action.payload.newMessage;
-            console.log('mess ',message)
             state.groups = state.groups.map((group) =>
               group._id === message.selectedCommunity
                 ? {

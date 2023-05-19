@@ -32,10 +32,8 @@ function ReviewCard({review,index,getAllReviews}) {
                         "Authorization" : `Bearer ${token}`
                     }
                   })
-                  console.log('rev ',reviews)
                   getAllReviews();
                   dispatch(removeReview({reviewId: review._id}));
-                  console.log('rev ',reviews)
                   
                   if (response.status===200) {
                     Swal.fire(

@@ -36,7 +36,6 @@ const Login = ()=> {
 		try {
 			const url = loginPost;
 			const { data } = await axios.post(url, datas);
-            console.log('first token=> ',data.token)
 
 			dispatch(setUser({user: data.user }))
 			dispatch(setToken({token: data.token }))

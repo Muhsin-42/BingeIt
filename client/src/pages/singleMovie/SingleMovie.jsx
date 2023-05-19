@@ -49,7 +49,6 @@ function SingleMovie() {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            console.log('fav =>',response.data.updatedUser);
             dispatch(setUser({user: response.data.updatedUser }))
         } catch (error) {
             console.log(error);
@@ -64,7 +63,6 @@ function SingleMovie() {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            console.log('wish =>',response.data.updatedUser);
             dispatch(setUser({user: response.data.updatedUser }))
         } catch (error) {
             console.log(error);
@@ -79,7 +77,6 @@ function SingleMovie() {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            console.log('wish =>',response.data.updatedUser);
             dispatch(setUser({user: response.data.updatedUser }))
         } catch (error) {
             console.log(error);
@@ -94,7 +91,6 @@ function SingleMovie() {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            console.log('unfav =>',response.data.updatedUser);
             dispatch(setUser({user: response.data.updatedUser }))
         } catch (error) {
             console.log(error);
@@ -102,15 +98,12 @@ function SingleMovie() {
     }
     const handleUnWishlistClick = async () =>{
         try {
-            console.log('unwis=>', currentUser._id)
-            // setHeartClicked(!heartClicked);
             const response = await axios.delete(`api/user/wishlist/${movieId}/${currentUser._id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            console.log('unwish =>',response.data.updatedUser);
             dispatch(setUser({user: response.data.updatedUser }))
         } catch (error) {
             console.log(error);
@@ -125,7 +118,6 @@ function SingleMovie() {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            console.log('wish =>',response.data.updatedUser);
             dispatch(setUser({user: response.data.updatedUser }))
         } catch (error) {
             console.log(error);

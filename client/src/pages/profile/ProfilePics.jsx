@@ -48,7 +48,6 @@ function ProfilePics({bg,dp,profileUser}) {
   const handleFileUpload = (event) => {
     // handle the file upload logic here
     const file = event.target.files[0];
-    console.log('file -0 ',file)
     notify();
     setImageUpload(prev=> file);
   };

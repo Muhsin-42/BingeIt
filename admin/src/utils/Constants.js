@@ -1,4 +1,4 @@
-export const baseUrl = "http://localhost:8800/";
+export const baseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 
 // urls
 export const loginPost = "api/admin/login";

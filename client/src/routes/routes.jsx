@@ -10,7 +10,6 @@ import Trending from '../pages/trending/Trending';
 import Watchlist from '../pages/watchlist/Watchlist';
 import LanguageMovies from '../pages/languageMovies/LanguageMovies';
 import Circle from '../pages/circle/Circle';
-import ChatPage from '../pages/ChatPage/ChatPage';
 import PageNotFound from '../pages/pageNotFound/PageNotFound';
 import SingleMovie from '../pages/singleMovie/SingleMovie';
 import Login from '../pages/login/Login';
@@ -18,25 +17,20 @@ import Register from '../pages/register/Register';
 import EmailVerify from '../component/emailVerify/EmailVerify';
 import ProtectedLayout from './ProtectedLayout';
 import UnProtectedLayout from './UnProtectedLayout';
-
-// const Profile = lazy(() => import('../pages/profile/Profile'));
 import Profile from '../pages/profile/Profile';
 import Notification from '../pages/notification/Notification';
+import CommunityChat from '../pages/Community/CommunityChat';
 
 
-
-
-
-const Layout = ()=>{          // Layout is the basic layout of an webpage // in this website there is like Navbar, LeftBar, and RightBar        // and these are common in all the pages hence we can make it a template.
+const Layout = ()=>{          
   return (
     <div>
        <NavBar></NavBar>          
        <div className="d-flex">
           <LeftBar/>
           <div className="home-container">
-            <Outlet />         {/* here is where the customized content gets rendered */}    
+            <Outlet />            
           </div>
-          {/* <RightBar/> */}
        </div>
     </div>
   )
@@ -88,8 +82,8 @@ const routes = [
           element: <Circle/>
         },
         {
-          path: '/chat',
-          element: <ChatPage/>
+          path: '/community',
+          element: <CommunityChat/>
         },
         {
           path: '/profile/:id',

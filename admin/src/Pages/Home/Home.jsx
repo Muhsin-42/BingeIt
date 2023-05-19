@@ -71,8 +71,6 @@ const Home = () => {
   },[]);
 
   const navigateToUsers = () =>{
-    console.log('djdjdjd')
-    alert('hurray ')
   }
     return (
     <div className="home">

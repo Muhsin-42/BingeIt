@@ -1,12 +1,29 @@
 import React, { useState,useEffect } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+
 import './navBar.scss'
 import logo from './../../assets/images/logo.png'
+import Diversity2Icon from '@mui/icons-material/Diversity2';
+import Diversity3Icon from '@mui/icons-material/Diversity3';
+import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { setLogout } from "../../Redux/store";
 
 function NavBar() {
 
   const [showNav,setNav] = useState(false);
   const [navStyle,setNavStyle] = useState({});
+
+
+    
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.user);
+  const [notifications,setNotifications] = useState([]);
+  const [newNotifications,setNewNotifications] = useState({});
+  const [notificationsCount,setNotificationsCount] = useState(0);
+  const token = useSelector(state => state.token);
+
   
   useEffect(() => {
       if(showNav){
@@ -36,25 +53,51 @@ function NavBar() {
       </div>
 
       <ul className='text-white ' style={navStyle}>
-          <li>
-            <i className="bi bi-house-door"></i>
-            Home
+      <li>
+            <Link className="link" to='home'>
+              <i className="bi bi-house-door"></i>
+              Home
+            </Link>
           </li>
           <li>
-            <i className="bi bi-bookmarks"></i>
-            Watchlist
+            <Link className="link" to='discover'>
+            <i className="bi bi-compass"></i>
+              Discover
+            </Link>
           </li>
           <li>
-            <i className="bi bi-heart"></i>
-            Favourite
+            <Link className="link" to='/watchlist'>
+              <i className="bi bi-bookmarks"></i>
+              Watchlist
+            </Link>
           </li>
           <li>
-            <i className="bi bi-fire"></i>
-            Trending
+            <Link className="link" to='trending' >
+              <i className="bi bi-fire"></i>
+              Trending
+            </Link>
           </li>
           <li>
+            <Link className="link" to='circle' >
+              <Diversity2Icon className='icons'/>
+              Circle
+            </Link>
+          </li>
+          <li>
+            <Link className="link" to='community' >
+              <Diversity3Icon className='icons'/>
+              Community
+            </Link>
+          </li>
+          <li>
+            <Link className="link" to='chat' >
             <i className="bi bi-bell"></i>
-            Notifications
+              Notifications
+            </Link>
+          </li>
+          <li onClick={()=>{  dispatch(setLogout()) }} >
+            <i className="bi bi-box-arrow-left"></i>
+              Logout
           </li>
         </ul>
     </div>

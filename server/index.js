@@ -33,9 +33,6 @@ app.use(helmet())
 app.use(morgan('common'))
 
 // routes
-router.get('/asdf', (req, res) => {
-  res.send('Hello world!');
-});
 app.use('/api/user',userRoute)
 app.use('/api/post',postRoute)
 app.use('/api/auth',authRoute)
@@ -62,7 +59,6 @@ module.exports = io;
     });
 
     socket.on('sendNotification', (data)=>{
-        console.log('ehehehh ',data)
         const receiver = getUser(data.receiverId)
         if (receiver) {
           io.to(receiver.socketId).emit('getNotification', data);
@@ -70,14 +66,11 @@ module.exports = io;
     });
 
     socket.on("sendMessage",(data)=>{
-      console.log('data ',data)
-      // io.emit('receiveMessage',data);
       socket.broadcast.emit('receiveMessage', data);
     })
 
 
     socket.on("setBlocked",(data)=>{
-      console.log(data);
       const receiver = getUser(data.receiverId)
       if(receiver){
         io.to(receiver.socketId).emit('getBlocked');

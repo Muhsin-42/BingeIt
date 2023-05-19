@@ -16,6 +16,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useSelector ,useDispatch} from "react-redux";
 import { setAllUsers} from '../../Redux/store';
 import SingleRow from "./SingleRow";
+import TablePagination from "@mui/material/TablePagination";
 
 
 const List = () => {
@@ -24,6 +25,8 @@ const List = () => {
   const dispatch=useDispatch()
   const [state, setState] = useState([]);
   const [block, setBlock] = useState(false)
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const searchBy = (e) => {
     let key = e.target.value;
@@ -33,7 +36,6 @@ const List = () => {
       axios
         .get(`${searchUser}/${key}`)
         .then((response) => {
-          console.log(response.data);
           setUsers(response.data);
         })
         .catch((err) => {
@@ -78,7 +80,6 @@ const List = () => {
       try{
         const response = await axios.patch(`api/admin/blockUser/${id}`)
         
-        console.log('3hjeheh')
         console.log(response);
         if (response.status===200 && result.isConfirmed) {
           Swal.fire(
@@ -135,7 +136,20 @@ const List = () => {
     };
   
 
+    // 
 
+    const handleChangePage = (event, newPage) => {
+      setPage(newPage);
+    };
+  
+    const handleChangeRowsPerPage = (event) => {
+      setRowsPerPage(parseInt(event.target.value, 10));
+      setPage(0);
+    };
+  
+    const emptyRows =
+      rowsPerPage - Math.min(rowsPerPage, users.length - page * rowsPerPage);
+      // 
 
   return (
     <div className="tablemain">
@@ -156,11 +170,29 @@ const List = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((user, index) => (
+
+        {(rowsPerPage > 0
+              ? users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : users
+            ).map((user, index) => (
+
+
+          // {users.map((user, index) => (
             <SingleRow user={user} index={index} />
           ))}
         </TableBody>
       </Table>
+
+      <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={users.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+
     </TableContainer>
     </div>
   );

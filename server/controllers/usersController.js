@@ -25,17 +25,15 @@ const usersController = {
                     }, { new: true }).then((updatedUser)=>{
                         res.status(200).json({updatedUser,msg:'Account has been updated'});
                     }).catch((error) => {
-                        console.log(error);
                         throw error;
                     });
                 }catch(error){
-                    console.log(error)
                     res.status(500).json(error)
+                  }
                 }
-            }
-        } catch (error) {
-            console.log('error = > ',error)
-        }
+              } catch (error) {
+                res.status(500).json(error)
+              }
     } ,
     addWishlist : async(req,res)=>{
         try {
@@ -47,8 +45,8 @@ const usersController = {
             const updatedUser = await User.findByIdAndUpdate(Object(userId),{$pull: {watched: movieId }},{new: true});
 
             res.status(200).json({updatedUser:updatedUser,msg: 'Movie added to wishlist'});
-        } catch (error) {
-            console.log('wishlisterror => ',error)
+          } catch (error) {
+          res.status(500);
         }
     },
     addFavourite : async(req,res)=>{
@@ -59,7 +57,7 @@ const usersController = {
             const updatedUser = await User.findByIdAndUpdate(Object(userId),{$addToSet: {favourite: movieId }},{new: true});
             res.status(200).json({updatedUser:updatedUser,msg: 'Movie added to wishlist'});
         } catch (error) {
-            console.log('wishlisterror => ',error)
+          res.status(500)
         }
     },
     addWatched : async(req,res)=>{
@@ -71,7 +69,7 @@ const usersController = {
             const updatedUser = await User.findByIdAndUpdate(Object(userId),{$pull: {wishlist: movieId }},{new: true});
             res.status(200).json({updatedUser:updatedUser,msg: 'Movie added to wishlist'});
         } catch (error) {
-            console.log('wishlisterror => ',error)
+          res.status(500)
         }
     },
 
@@ -94,7 +92,7 @@ const usersController = {
             msg: 'Movie removed from wishlist',
           });
         } catch (error) {
-          console.log('wishlist error => ', error);
+          res.status(500)
         }
       },
       removeFavourite: async (req, res) => {
@@ -113,7 +111,7 @@ const usersController = {
             msg: 'Movie removed from wishlist',
           });
         } catch (error) {
-          console.log('wishlist error => ', error);
+          res.status(500)
         }
       },
       removeWatched: async (req, res) => {
@@ -132,7 +130,7 @@ const usersController = {
             msg: 'Movie removed from wishlist',
           });
         } catch (error) {
-          console.log('wishlist error => ', error);
+          res.status(500)
         }
       },
                   
@@ -147,7 +145,6 @@ const usersController = {
             if(user) res.status(200).json(user);
             else res.status(404).json({message: 'user not found'});
         } catch (error) {
-            console.log('error = ',error)
             res.status(500).json(error)
         }
     },
@@ -220,7 +217,6 @@ const usersController = {
 
             res.status(200).json(cUser);
         } catch (error) {
-            console.log('followUser error =>',error)
             res.status(500).send({message:error})
         }
     },
@@ -245,7 +241,6 @@ const usersController = {
   
       res.status(200).json(cUser);
     } catch (error) {
-      console.log('unfollowUser error =>', error)
       res.status(500).send({ message: error })
     }
     },
@@ -261,7 +256,6 @@ const usersController = {
                 res.status(404).json({message: 'User not found'});
               }
         } catch (error) {
-            console.log('edit profile error = > ',error)
             res.status(500).send({error});
         }
     },
@@ -278,7 +272,6 @@ const usersController = {
                 res.status(404).json({message: 'User not found'});
               }
         } catch (error) {
-            console.log('edit profile error = > ',error)
             res.status(500).send({error});
         }
     },
@@ -313,7 +306,6 @@ const usersController = {
 
         res.status(200).json(allReviews);
       } catch (error) {
-        console.log(error);
         res.status(500).json({ error: error.message });
       }
     },
@@ -323,7 +315,6 @@ const usersController = {
         const reviews = await ReviewModel.find({ movieId: movieId }).populate('userId').sort({ createdAt: -1 });
         res.status(200).json(reviews);
       } catch (error) {
-          console.log('get rev ',error)
         res.status(500);
       }
     },
@@ -332,7 +323,6 @@ const usersController = {
         const reviews = await ReviewModel.find().populate('userId', 'username name profilePicture email').sort({ createdAt: -1 });
         res.status(200).json(reviews);
       } catch (error) {
-          console.log('get rev ',error)
         res.status(500);
       }
     },
@@ -345,7 +335,6 @@ const usersController = {
         const newSetOfReviews = await ReviewModel.find({movieId: result.movieId});
         res.status(200).json(newSetOfReviews);
       } catch (error) {
-        console.log(error)
         res.status(500).json(false);
       }
     },
@@ -371,7 +360,6 @@ const usersController = {
 
         res.status(200).json(allReplies);
       } catch (error) {
-        console.log(error);
         res.status(500).json({ error: error.message });
       }
     },
@@ -388,7 +376,6 @@ const usersController = {
 
         res.status(200).json(allReplies);
       } catch (error) {
-        console.log(error);
         res.status(500).json({ error: error.message });
       }
     }

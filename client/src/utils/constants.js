@@ -1,9 +1,8 @@
-export const movieBaseUrl = 'https://api.themoviedb.org/3'
-export const API_KEY = '70dcbe0b3e27569940267305628dfc97'
+
+export const movieBaseUrl = import.meta.env.VITE_MOVIE_BASE_URL
 export const imageUrl = 'https://image.tmdb.org/t/p/original'
-
-
-export const baseUrl = "http://localhost:8800/";
+export const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+export const baseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 
 // urls
 export const loginPost = "api/auth/login";

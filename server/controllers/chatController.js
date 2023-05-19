@@ -10,7 +10,6 @@ const chatsController = {
     createGroup : async (req,res) =>{
         try {
             const { name, description, creator, members, image } = req.body;
-            console.log('reqqqq ',req.body)
             const newGroup = new GroupsModel({
               name,
               description,

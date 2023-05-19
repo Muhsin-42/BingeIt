@@ -43,7 +43,6 @@ function Profile() {
           })
           dispatch(setUser({ user: response.data }))
           setLoading(false)
-          console.log('jejeje ')
           const notificationData = {
             type: 'follow',
             notificationFor: Object(id),
@@ -56,7 +55,6 @@ function Profile() {
                 'Authorization': `Bearer ${token}`,
             },
         });
-          console.log('jojojoj ')
 
       } catch (err) {
           console.log(err);
@@ -125,7 +123,6 @@ function Profile() {
 
 
     const toggleInfoBar = (type) =>{
-        console.log('tt ',activeTab)
         setActiveTab(type);
     }
   
@@ -171,7 +168,7 @@ function Profile() {
                         color: activeTab === 'followers' ? 'black' : 'white',
                         pointerEvents: activeTab === 'followers' ? 'none' : 'auto'
                       }}>
-                    Followers<br />{Object.keys(friend).length ? friend.followers.length : '0'}
+                    Followers<br />{Object.keys(friend)?.length ? friend?.followers?.length : '0'}
             </div>
 
             <div onClick={()=>toggleInfoBar('following')} className="card-3 col col-6 col-lg-2 col-md-6 col-sm-6"
@@ -180,7 +177,7 @@ function Profile() {
                         color: activeTab === 'following' ? 'black' : 'white',
                         pointerEvents: activeTab === 'following' ? 'none' : 'auto'
                       }}>
-                    Following<br />{Object.keys(friend).length ? friend.following.length : '0'}
+                    Following<br />{Object.keys(friend)?.length ? friend?.following?.length : '0'}
             </div>
 
             <div className="card-4 col col-6 col-lg-3 col-md-6 col-sm-6">Watch Hours<br />23hr 45mins</div>

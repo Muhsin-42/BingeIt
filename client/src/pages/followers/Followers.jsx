@@ -19,14 +19,12 @@ function Followers({profileUser,currentUser,activeTab}) {
             'Authorization': `Bearer ${token}`,
         },
     });
-      console.log('11101010010 => ',result.data)
       setFollowers(result.data)
     }
   }
   
   const getFollowing = async () =>{
     if(Object.keys(profileUser).length){
-      console.log('pp =>' , profileUser)
       const result =  await axios.get(`api/user/following/${profileUser._id}`,{
         headers: {
             "Content-Type": "application/json",

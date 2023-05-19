@@ -53,7 +53,6 @@ function PostCard({post,getAllPosts}) {
       headers :{ "Content-Type" : "application/json", Authorization:  `Bearer ${token}`}
     });
 
-    console.log('response.data ',response.data);
     if(liked){
       // setLiked(false)
       setLikesCount(prev =>  prev-1)
@@ -76,7 +75,7 @@ function PostCard({post,getAllPosts}) {
         senderProfile : currentUser.profilePicture,
         createdAt : response.data.createdAt
     };
-    socket.emit("message", socketData )
+    socket.emit("sendNotification", socketData )
     }   
  
   }
@@ -89,7 +88,6 @@ function PostCard({post,getAllPosts}) {
         headers :{ "Content-Type" : "application/json", Authorization:  `Bearer ${token}`}
       });
       setComment('');
-      console.log('comm ',response.data)
       dispatch(setPost({post: response.data}))
     } catch(error){
       console.log('handleComment err ',error);
@@ -104,11 +102,10 @@ function PostCard({post,getAllPosts}) {
   const handleClose = () => setOpen(false);
 
   const handleReport = async (optionText) =>{
-    setTimeout(()=>{
-        handleClose();
-    },2000);
-
+  
+    
     try {
+
       await axios.post(`/api/post/report/${post._id}`,{userId : currentUser._id, reportReason: optionText},
       {
         headers:{
@@ -128,7 +125,9 @@ function PostCard({post,getAllPosts}) {
     } catch (error) {
       
     }
-
+  setTimeout(()=>{
+          handleClose();
+    },2000);
   }
 
 

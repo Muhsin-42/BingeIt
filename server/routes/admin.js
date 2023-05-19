@@ -6,12 +6,9 @@ const JWT = require("jsonwebtoken");
 
 
 
-// router.post('/register',adminController.UserSignup)
 router.post('/login',adminController.adminLogin)
 router.patch('/blockUser/:id',adminController.blockUser)
 router.patch('/unblockUser/:id',adminController.unblockUser)
-// router.post("/verifyToken", adminController.verifyToken);
-// router.get("/:id/verify/:token",adminController.verifyEmail) //Email link verification
 
 
 router.get('/getAllUsers',adminController.getAllUsers)

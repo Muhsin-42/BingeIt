@@ -1,4 +1,11 @@
+@media (max-width: 600px) {
+  .chatMain{
+    margin-left: 0 !important;
+    margin-right: 0  !important;
+  }
+}
 .chatMain{
+  
   color: white;
   display: flex;
   margin: 50px auto;
@@ -14,6 +21,15 @@
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
 
+
+  @media (max-width: 600px) {
+    .left-main{
+      padding: 0px !important;
+    }
+    .channels{
+      padding: 0 !important;
+    }
+  }
 
   .left-main{
     flex: 1;
@@ -164,22 +180,34 @@
   margin-top: 4px;
 }
 
-
+@media (max-width: 600px) {
+  .single-message{
+    padding: 7px !important;
+    max-width: max-content !important ;
+  } 
+}
+@media (min-width: 600px) {
+  .single-message{
+    // min-width: 40%;
+  } 
+}
 
 .single-message{
-
+  max-width: 50%;
+  word-wrap: break-word;
   background-color: #2b2d31;
   border-radius: 10px;
   margin-bottom: 10px;
-  padding: 10px;
-  width: 50%;
+  padding: 15px;
+  // width: 50%;
+  width: max-content;
   display: flex;
   gap: 10px;
   .left{
     img{
       border-radius: 50%;
       height: 30px;
-      width: 30px;
+      width: 30px; 
     }
   }
   .right{
@@ -187,10 +215,15 @@
     .level1{
       display: flex;
       justify-content: space-between;
+      .time{
+        padding-left: 15px; 
+      }
     }
     .level2{
 
-
+      .message-text{
+        word-wrap: break-word;
+      }
 
     }
   }
@@ -198,3 +231,6 @@
 .myMessage{
   margin-left: auto;
 }
+
+
+// media queries

@@ -33,56 +33,6 @@ function UserRow({user,handleUserClick}) {
   };
 
 
-  // Follow & Unfollow
-// const handleFollow = async (event) => {
-//   // event.stopPropagation();
-//   try {
-//       const response = await axios.patch(`api/user/follow/${user._id}`,{ currentUser:  currentUser._id}, {
-//           headers: {
-//               "Content-Type": "application/json",
-//               'Authorization': `Bearer ${token}`,
-//           },
-//       })
-//       console.log('follow data =>',response.data);
-//       dispatch(setUser({ user: response.data }))
-//   } catch (err) {
-//       console.log(err);
-//   }
-// }
-
-// const handleUnfollow = async (event) => {
-//   // event.stopPropagation();
-//   try {
-//       const response = await axios.patch(`api/user/unfollow/${user._id}`,{ currentUser:  currentUser._id}, {
-//           headers: {
-//               "Content-Type": "application/json",
-//               'Authorization': `Bearer ${token}`,
-//           },
-//       })
-//       console.log('unfollow data => ',response.data);
-//       dispatch(setUser({ user: response.data }))
-//   } catch (err) {
-//       console.log(err);
-//   }
-// }
-
-
-// useEffect(()=>{
-//   if(currentUser.following.includes(user._id)){
-//     setFollowing('following')
-//   }
-// },[following])
-
-// const toggleFollow = (event)=>{
-//   event.stopPropagation();
-//   if(following=='follow'){
-//     handleFollow();
-//     setFollowing('following')
-//   }else{
-//     handleUnfollow();
-//     setFollowing('follow')
-//   }
-// }
 
 
 

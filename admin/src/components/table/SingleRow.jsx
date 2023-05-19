@@ -47,7 +47,7 @@ function SingleRow({user,index}) {
                 receiverId : id,
                 type: 'blocked',
                 blocked: true
-            };
+              };
             socket.emit("setBlocked", socketData )
 
 

@@ -42,8 +42,6 @@ router.delete('/watched/:movieId/:userId',authController.verifyToken,usersContro
 router.put('/wishlist/:movieId',authController.verifyToken,usersController.addWishlist);
 router.delete('/wishlist/:movieId/:userId',authController.verifyToken,usersController.removeWishlist);
 
-// Post
-// router.post('/post/:userId',authController.verifyToken,usersController.createPost);
 
 
 module.exports =  router;

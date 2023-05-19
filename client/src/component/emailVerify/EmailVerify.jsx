@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../utils/axios'
 import './emailVerify.scss';
 import React, { useState, Fragment, useEffect } from 'react'
 import {Link, useParams} from 'react-router-dom' 
@@ -11,9 +11,8 @@ function EmailVerify() {
     const handleOnclick = ()=>{
         const verifyEmailUrl = async()=>{
             try {
-                const url = `http://localhost:8800/api/auth/${param.id}/verify/${param.token}`
+                const url = `/api/auth/${param.id}/verify/${param.token}`
                 const {data} = await axios.get(url)
-                console.log(data)
                 setValidUrl(true)
                 setInvalidUrl(false)
             } catch (error) {

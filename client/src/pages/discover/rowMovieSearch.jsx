@@ -14,7 +14,6 @@ import { useNavigate } from 'react-router-dom'
 function RowMovieSearch({ movie }) {
     const Navigate = useNavigate();
     const handleMovieClick = () => {
-        console.log('handle movie click ', movie.id)
         Navigate(`/movie/${movie.title}/${movie.id}`)
     }
     return (

@@ -113,7 +113,6 @@ const AddPost = () => {
 
 
     const uploadPost = async (uploadImageName) => {
-        console.log('url => ',uploadImageName)
         try {
             const result = await axios.post(`api/post/post/${currentUser._id}`, { data: uploadImageName, content: postContent }, {
                 headers: {

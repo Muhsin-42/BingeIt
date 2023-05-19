@@ -14,7 +14,6 @@ import Reports from './Pages/Reports/Reports'
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   const token = useSelector(state=>state.token)
-  console.log('token = >' ,token);
   if(token===null){
      
   }
