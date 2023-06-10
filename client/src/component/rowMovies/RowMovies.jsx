@@ -5,8 +5,8 @@ import axios from '../../movieApi/axios'
 import { useNavigate } from 'react-router-dom'
 import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-
+// import 'react-lazy-load-image-component/src/effects/blur.css';
+import blurCSS from 'react-lazy-load-image-component/src/effects/blur.css?inline';
 
 function RowMovies({movies,title}) {
   const Navigate = useNavigate();
@@ -17,6 +17,7 @@ function RowMovies({movies,title}) {
 
   return ( 
     <div className='rowMovies text-white'>
+      <style>blurCSS</style>
     <h2>{title? title : 'loading'}</h2>
     <div className="posters">
       {

@@ -80,12 +80,12 @@
                     {/* name time rating review */}
                     <div className="set1">
                         {/* name time */}
-                        <span className="name fs-3 font-weight-bold">{review?.userId.name}</span>
+                        <span className="name fs-3 font-weight-bold">{review?.userId?.name}</span>
                         <span className="time">{ moment(review?.createdAt).fromNow()  }</span>
                     </div>
                     <div className="set2">
                         {/* rating */}
-                        <span>@{review?.userId.username}</span>
+                        <span>@{review?.userId?.username}</span>
                         <Rating className='mt-3' name="read-only" value={parseInt(review?.rating)} readOnly />
                     </div>
                     <div className="set3 ">
@@ -95,11 +95,11 @@
                     <div className="set4 mt-3">
                         <ThumbUpOutlinedIcon onClick={handleLike} className="icons thumb-up-icon"  />
                         {/* <ThumbUpIcon className="thumb-up-icon"  /> */}
-                        <Badge color="secondary" badgeContent={replies.length} showZero={false} style={{zIndex: 5}}>
+                        <Badge color="secondary" badgeContent={replies?.length} showZero={false} style={{zIndex: 5}}>
                                 <CommentIcon onClick={handleReplyToggle} className='icons'/>
                         </Badge>
                         {
-                            currentUser?._id == review?.userId._id.toString() ?
+                            currentUser?._id == review?.userId?._id.toString() ?
                             <DeleteIcon onClick={handleDelete} className='icons'/>
                             :
                             <FlagIcon className='icons'/>

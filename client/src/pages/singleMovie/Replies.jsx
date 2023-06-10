@@ -41,7 +41,7 @@ function Replies({review,movieDetails}) {
         e.preventDefault();
         try {
 
-            if(replyMsgInput =='' || replyMsgInput.trim() == '')
+            if(replyMsgInput =='' || replyMsgInput?.trim() == '')
             {
                 notifyEmptyReply();
                 return;

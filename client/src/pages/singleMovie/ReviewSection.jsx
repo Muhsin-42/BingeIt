@@ -70,7 +70,7 @@ function ReviewSection({movieDetails,currentUser}) {
                         movieDetails &&
                         reviews?.map((review)=>
                              (
-                                <ReviewCard key={review._id} review={review} 
+                                <ReviewCard key={review?._id} review={review} 
                                 currentUser={currentUser} 
                                 handleDeleteReview={handleDeleteReview}
                                 movieDetails={movieDetails} />

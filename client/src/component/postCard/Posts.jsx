@@ -27,10 +27,11 @@ function Posts() {
     useEffect(()=>{
         getAllPosts();
     },[])
-
+    console.log('pr' ,postsRedux)
   return (
     <div className='postsMain'> 
         {
+            Array.isArray(postsRedux) &&
             postsRedux?.map((post)=>{
                 return (
                     !post.isDelete && <PostCard getAllPosts={getAllPosts}  key={post._id} post={post}/>

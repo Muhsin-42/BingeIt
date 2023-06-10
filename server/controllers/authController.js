@@ -1,4 +1,4 @@
-var Loginvalidate = require('../utils/validate')
+var Loginvalidate = require('../utils/validate.js')
 const { User, validate } = require("../models/UserModel");
 const TokenModel = require("../models/TokenModel");
 const sendEmail = require('../utils/sendEmail')

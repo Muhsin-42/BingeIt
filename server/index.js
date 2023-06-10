@@ -33,6 +33,10 @@ app.use(helmet())
 app.use(morgan('common'))
 
 // routes
+app.use('/',(req,res)=>{
+  console.log('Hello world ');
+  res.send('belcome to binginstaan')
+})
 app.use('/api/user',userRoute)
 app.use('/api/post',postRoute)
 app.use('/api/auth',authRoute)

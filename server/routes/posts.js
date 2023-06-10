@@ -12,5 +12,4 @@ router.get('/posts',authController.verifyToken,postsController.getAllPosts);
 router.patch('/like/:postId',authController.verifyToken,postsController.like)
 router.patch('/comment/:postId',authController.verifyToken,postsController.addComment)
 
-
 module.exports =  router;

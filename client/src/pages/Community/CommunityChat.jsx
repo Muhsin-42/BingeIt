@@ -99,7 +99,10 @@ const CommunityChat = () => {
                     <div className="title fs-3">Communities</div>
                     <div className="channels ">
                         {
-                            groups &&
+                            console.log('grous',groups)
+                        }
+                        {
+                            Array.isArray(groups) &&
                             groups?.map((group, index) => {
                                 return (
                                     <div className="singleChannel" key={group?._id} onClick={() => { setSelectedGroup(group); toggleMobileMenu(); }}>
