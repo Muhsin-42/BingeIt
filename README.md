@@ -45,28 +45,36 @@ To run the project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/Muhsin-42/BingeIt.git
 
 2. Install Dependencies
+   ```bash
     cd client
     npm install
-
+   ```bash
     cd ../admin
     npm install
-
+   ```bash
     cd ../server
     npm install
 
 3. create .env at server with variables
-    [MONGO_URL, PORT, JWT_SECRET_KEY, BASE_URL, HOST, SERVICE, EMAIL_PORT, SECURE, USER, PASS]
+- `PORT`: Port on which the server runs.
+- `MONGO_URL`: URI of the MongoDB database.
+- `JWT_SECRET_KEY`: Secret key used for JWT authentication.
+- `BASE_URL`: Url on which Client is running.
+- `HOST`: Host address for the email service provider.
+- `SERVICE`: Email service provider (e.g., 'gmail', 'yahoo', etc.)
+- `EMAIL_PORT`: Port number for the email service
+- `SECURE`: Whether the email service uses a secure connection (e.g., 'true' or 'false')
+- `USER`: Email address from which verification emails will be sent
+- `PASS`: Password for the email account
+
 
 4. start server
-    cd server
+   ```bash
     npm start
 
 5. start client and admin
-    cd client
-    npm run dev
-
-    cd ../admin
+   ```bash
     npm run dev
