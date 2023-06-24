@@ -51,10 +51,10 @@ To run the project locally, follow these steps:
    ```bash
     cd client
     npm install
-   ```bash
+
     cd ../admin
     npm install
-   ```bash
+
     cd ../server
     npm install
 
@@ -70,11 +70,19 @@ To run the project locally, follow these steps:
 - `USER`: Email address from which verification emails will be sent
 - `PASS`: Password for the email account
 
+4. create .env at client and admin
+- `VITE_SERVER_BASE_URL`: Base URL of the server.
 
 4. start server
    ```bash
+    cd server
     npm start
+
 
 5. start client and admin
    ```bash
+    cd client
+    npm run dev
+
+    cd ../admin
     npm run dev
