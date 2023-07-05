@@ -1,15 +1,10 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import './register.scss'
-import React, { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, } from 'react-router-dom'
 import axios from '../../utils/axios';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle'
 import CircularProgress from '@mui/material/CircularProgress'
-import { positions } from '@mui/system';
-import FormInput from './FormInput'
-import { ratingClasses } from '@mui/material'
 import { ToastContainer, toast } from 'react-toastify';
 
 const initialValues = {
@@ -47,13 +42,10 @@ const signUpSchema = Yup.object({
     .oneOf([Yup.ref("password"), null], "Password must match"),
 });
 
-
-
-
 const Register = () => {
-
-  const [signupError, setSignupError] = useState(false);
   const [signupSuccess, setSignupSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const notifyEmailExists = () => toast.error("Email already exists", {
     position: toast.POSITION.TOP_RIGHT
   });
@@ -83,6 +75,7 @@ const Register = () => {
 
 
         try {
+          setLoading(true)
           const { data: res } = await axios.post("/api/auth/register", user)
           setSignupSuccess(res.message)
           notifyEmailSent();
@@ -93,27 +86,18 @@ const Register = () => {
           if (error.response.data.phoneExists) notifyPhoneExists();
           if (error.response.data.usernameExists) notifyUsernameExists();
           setSignupSuccess(false)
+        } finally {
+          setLoading(false)
         }
       },
     });
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div className="register pt-5 pb-5" style={{ minHeight: 'max-content' }} >
 
       <ToastContainer autoClose={8000} />
 
-      <CircularProgress color="success" style={{ display: signupSuccess ? "" : "none", position: "absolute", top: '50%', left: '50%' }} />
+      {/* <CircularProgress color="success" style={{ display: signupSuccess ? "" : "none", position: "absolute", top: '50%', left: '50%' }} /> */}
       <div className="registerCard">
         <div className="left">
           <h1>Binge!</h1>
@@ -149,19 +133,10 @@ const Register = () => {
             {errors.cpassword && touched.cpassword ? (<p className="form-error">{errors.cpassword}</p>) : null}
 
             <button className="btn" type='submit'>
+              {loading && <CircularProgress size={'15px'} sx={{ color: "white" }} />}
               Register</button>
           </form>
-
-
-
-
-
-
-
-
-
-
-          {/* <span>Already have an account? <Link to='/login'>Login</Link></span> */}
+          <span className="login-txt">Already have an account? <Link to='/login'>Login</Link></span>
         </div>
       </div>
     </div>

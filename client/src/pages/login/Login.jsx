@@ -1,16 +1,18 @@
 import "./login.scss";
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from "../../utils/axios";
 import { loginPost } from "../../utils/constants";
 import { setUser, setToken } from "../../Redux/store";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const Login = () => {    
+const Login = () => {
 	const [datas, setDatas] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 	const [loginError, setLoginError] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const dispatch = useDispatch();
 
 	const notifyLoginError = (error) => toast.error(error, {
@@ -23,6 +25,9 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		setLoading(true)
+
 		try {
 			const url = loginPost;
 			const { data } = await axios.post(url, datas);
@@ -34,6 +39,8 @@ const Login = () => {
 				setLoginError(true);
 				notifyLoginError(error.response.data.message);
 			}
+		} finally {
+			setLoading(false)
 		}
 	};
 
@@ -55,9 +62,12 @@ const Login = () => {
 						<input type="email" placeholder="email" onChange={handleChange} value={datas.email} name='email' style={{ borderColor: `${loginError ? 'red' : 'none'}` }} required />
 						<span className="emailError"></span>
 						<input className="m-0" type="password" placeholder="Password" onChange={handleChange} value={datas.password} minLength='3' name="password" style={{ borderColor: `${loginError ? 'red' : 'none'}` }} required />
-						<button className="btn" type="submit">Login</button>
+						<button className="btn" type="submit">
+							{loading && <CircularProgress size={'15px'} sx={{ color: "white" }} />}
+							Login
+						</button>
 					</form>
-					<span>Don't have an account?<Link to='/register'>register</Link></span>
+					<span className="register-txt">Don't have an account?<Link to='/register'>register</Link></span>
 				</div>
 			</div>
 		</div>
