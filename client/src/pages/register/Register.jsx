@@ -93,7 +93,6 @@ const Register = () => {
           if (error.response.data.phoneExists) notifyPhoneExists();
           if (error.response.data.usernameExists) notifyUsernameExists();
           setSignupSuccess(false)
-          // setSignupError(error.response.data.message);
         }
       },
     });

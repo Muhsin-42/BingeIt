@@ -1,25 +1,12 @@
-import React from 'react'
 import './home.scss'
-import {API_KEY, imageUrl} from '../../utils/constants'
-import axios from '../../movieApi/axios'
-import {originals,ActionMovies,Comedy,Romance,Horror,Documentary,
-        Adventure ,Animation ,Crime ,Family ,ScienceFiction ,Thriller ,War} from '../../movieApi/urls'
+import {originals,ActionMovies,Comedy,Romance,Horror,Documentary, Adventure ,Animation ,Crime ,Family ,ScienceFiction ,Thriller ,War} from '../../movieApi/urls'
+import { english, malayalam, hindi, kannada, tamil, telgu } from '../../assets'
 import RowMoviesWide from '../../component/rowMoviesWide/RowMoviesWide'
-import english from '../../assets/images/languages/english.jpg'
-import malayalam from '../../assets/images/languages/malayalam.jpg'
-import hindi from '../../assets/images/languages/hindi.jpg'
-import kannada from '../../assets/images/languages/kanada.jpg'
-import tamil from '../../assets/images/languages/tamil.jpg'
-import telgu from '../../assets/images/languages/telgu.jpg'
-import marathi from '../../assets/images/languages/marathi.jpg'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-// import RowMovies from '../../component/rowMovies/RowMovies'
 import HomeMOvieRow from './HomeMovieRow'
 import { Link } from 'react-router-dom'
 function Explore() {
-
-
 
   return (
     <div className='explore pt-3'>
@@ -60,13 +47,8 @@ function Explore() {
         <HomeMOvieRow title='Adventure Movies'   url={Adventure}></HomeMOvieRow>
         <HomeMOvieRow title='Horror Movies'   url={Horror}></HomeMOvieRow>
         <HomeMOvieRow title='Documentaries'   url={Documentary}></HomeMOvieRow>
-
     </div>
   )
 }
  
 export default Explore
-
-
-
-// no movie=> icon

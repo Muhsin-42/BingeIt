@@ -1,6 +1,4 @@
-import React from 'react'
-import Posts from '../../component/postCard/Posts'
-import AddPost from '../../component/postCard/AddPost'
+import { Posts, AddPost } from '../../component'
 
 function Circle() {
   return (

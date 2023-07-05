@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './chat.scss'
 import { useSelector } from 'react-redux';
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp, where } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
 import moment from 'moment'
 const MessagesSection = ({ selectedGroup }) => {
@@ -10,7 +10,6 @@ const MessagesSection = ({ selectedGroup }) => {
   const [messages, setMessages] = useState([]);
   const currentUser = useSelector(state => state.user);
   const messageRef = collection(db, "GroupA");
-
 
   useEffect(() => {
     if (selectedGroup) {

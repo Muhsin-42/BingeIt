@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import BigMovieList from '../../component/bigMovieList/BigMovieList'
-import { useSelector, useDispatch  } from 'react-redux';
 import axios  from '../../movieApi/axios'
-import { API_KEY,imageUrl } from '../../utils/constants'
+import { API_KEY } from '../../utils/constants'
 import { useParams } from 'react-router-dom';
 
 function LanguageMovies() {
 
     const {language} = useParams();
-    
     const [movies, setMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(10);
@@ -50,17 +48,7 @@ function LanguageMovies() {
         fetchMovies();
       }
     }, [currentPage]);
-  
-    let renderedIds = {};
-    function handleRenderedIds(id){
-      if(renderedIds[id])
-          return false;
-      else{
-          renderedIds[id] = true;
-          return true;
-      }
-    }
-  
+
   return (
     <div>
         { language == 'en' &&    <BigMovieList title={`ENGLISH`}  movies={movies} ></BigMovieList> }

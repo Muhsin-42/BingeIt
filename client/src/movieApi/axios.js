@@ -4,5 +4,4 @@ const instance = axios.create({
     movieBaseUrl : movieBaseUrl 
 });
 
-
 export default instance;

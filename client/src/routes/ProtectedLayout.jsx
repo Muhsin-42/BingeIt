@@ -7,7 +7,7 @@ const ProtectedLayout =  ({children})=>{
   
     if(!user) return <Navigate to='/login'/>
     return children;
-  }
+}
   
 
 export default ProtectedLayout;

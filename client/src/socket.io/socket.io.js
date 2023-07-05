@@ -1,4 +1,3 @@
-// socket.js file
 import io from 'socket.io-client';
 import { baseUrl } from '../utils/constants';
 

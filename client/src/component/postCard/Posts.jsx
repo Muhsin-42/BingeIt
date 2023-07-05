@@ -27,7 +27,6 @@ function Posts() {
     useEffect(()=>{
         getAllPosts();
     },[])
-    console.log('pr' ,postsRedux)
   return (
     <div className='postsMain'> 
         {

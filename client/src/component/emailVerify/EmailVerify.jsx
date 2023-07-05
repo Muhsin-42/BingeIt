@@ -1,6 +1,6 @@
 import axios from '../../utils/axios'
 import './emailVerify.scss';
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState } from 'react'
 import {Link, useParams} from 'react-router-dom' 
 function EmailVerify() {
     const [ validUrl, setValidUrl] = useState(false);

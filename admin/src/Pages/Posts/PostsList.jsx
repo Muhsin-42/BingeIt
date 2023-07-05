@@ -31,11 +31,9 @@ function PostsList() {
         }
       })
         .then((response) => {
-          console.log('respo   ',response)
           dispatch(setPosts({ posts: response.data }))
         })
         .catch((error) => {
-          console.log("inside catch");
           console.log(error);
         });
     };

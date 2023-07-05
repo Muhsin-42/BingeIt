@@ -32,7 +32,6 @@ function PostsList() {
             dispatch(setReviews({ reviews: response.data }))
           })
           .catch((error) => {
-            console.log("inside catch");
             console.log(error);
           });
     };

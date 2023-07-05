@@ -27,7 +27,6 @@ const Home = () => {
         dispatch(setPosts({ posts: response.data }))
       })
       .catch((error) => {
-        console.log("inside catch");
         console.log(error);
       });
   };
@@ -42,7 +41,6 @@ const Home = () => {
         dispatch(setReviews({ reviews: response.data }))
       })
       .catch((error) => {
-        console.log("inside catch");
         console.log(error);
       });
   };

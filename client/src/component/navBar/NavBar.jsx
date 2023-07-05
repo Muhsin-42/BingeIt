@@ -1,29 +1,17 @@
 import React, { useState,useEffect } from 'react'
-import { Link, useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import './navBar.scss'
 import logo from './../../assets/images/logo.png'
 import Diversity2Icon from '@mui/icons-material/Diversity2';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
-import { useSelector } from 'react-redux';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import { setLogout } from "../../Redux/store";
 
 function NavBar() {
 
   const [showNav,setNav] = useState(false);
   const [navStyle,setNavStyle] = useState({});
-
-
-    
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.user);
-  const [notifications,setNotifications] = useState([]);
-  const [newNotifications,setNewNotifications] = useState({});
-  const [notificationsCount,setNotificationsCount] = useState(0);
-  const token = useSelector(state => state.token);
-
   
   useEffect(() => {
       if(showNav){

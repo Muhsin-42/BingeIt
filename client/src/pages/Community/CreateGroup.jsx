@@ -1,17 +1,8 @@
-import Tooltip from '@mui/material/Tooltip';
-import Fab from '@mui/material/Fab';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
-import TextField from '@mui/material/TextField';
+import { styled, Tooltip, Fab, Box, Typography, Modal, Stack, Avatar, TextField } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ImageIcon from '@mui/icons-material/Image';
-import { styled } from '@mui/material';
 import Add from '@mui/icons-material/Add';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDropzone } from "react-dropzone";
 import axios from '../../utils/axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,7 +11,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 } from 'uuid'
-import {  addGroup, setGroups } from '../../Redux/store';
+import { setGroups } from '../../Redux/store';
 
 const StyledModal = styled(Modal)({
     display: "flex",
@@ -55,12 +46,8 @@ const CreateGroup = () => {
         position: toast.POSITION.TOP_RIGHT
     });
 
-
-
     const { getRootProps, getInputProps } = useDropzone({
-        accept: {
-            'image/*': [],
-        },
+        accept: { 'image/*': [] },
         multiple: false,
         onDrop: acceptedFiles => {
             setImgae(false)
@@ -71,10 +58,6 @@ const CreateGroup = () => {
     });
 
     const user = useSelector(state => state.user);
-
-
-
-    // ********************
 
     const handleSubmitMe = (event) => {
 
@@ -130,15 +113,11 @@ const CreateGroup = () => {
             setLoading(false);
             setOpen(false);
             dispatch(setGroups({ groups: [result.data, ...groups ] }));
-            // dispatch(addGroup({newGroup : response.data}))
-
             setFiles([]);
             setCommunityName("");
         } catch (error) {
         }
     }
-    // ********************
-
 
     return (
         <>
@@ -195,5 +174,4 @@ const CreateGroup = () => {
     );
 };
 
-export default CreateGroup
-
+export default CreateGroup;

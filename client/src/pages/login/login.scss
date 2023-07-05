@@ -1,5 +1,4 @@
 .login{
-
     height: 100vh;
     background-color: rgb(193, 190, 255);
  
@@ -22,7 +21,6 @@
             width: 90%;
         }
         
-
         background-color: white;
         display: flex;
         width: 50%;
@@ -30,16 +28,12 @@
         overflow: hidden;
         min-height: 500px;
 
-
-
-
         .left{
             @media (max-width: 700px){
                 display: none;
             }
 
             flex: 1;
-
             background: linear-gradient(rgba(39,11,96,0.5),rgba(39,11,96,0.5)) , url('https://i.pinimg.com/564x/09/a5/73/09a573ede3f8ae84c6f8657a50f8722d.jpg') ;
             background-size: cover;
             padding: 50px;
@@ -65,11 +59,9 @@
         }
 
         .right{
-
             @media (max-width: 600px) {
                 padding: 20px;
             }
-
             flex: 1;
             padding: 50px;
             display: flex;
@@ -77,7 +69,6 @@
             flex-direction: column;
             gap: 50px;
 
-            h1{}
             form{
                 display: flex;
                 flex-direction: column;
@@ -107,13 +98,6 @@
         }
     }
 }
-
-
-
-
-
-
-
 
 .alerts{
     position: absolute;

@@ -1,12 +1,3 @@
-// overview
-// vote_average
-// vote_count
-// release_date
-// original_language
-// id
-
-
-import React from 'react'
 import './rowMovieSearch.scss'
 import { imageUrl } from '../../utils/constants'
 import { useNavigate } from 'react-router-dom'
@@ -20,9 +11,6 @@ function RowMovieSearch({ movie }) {
         <div className="movieRowMain">
             {movie.backdrop_path &&(
                 <>
-                    {/* <div className="movieDiv">
-                        <img src={imageUrl + movie.poster_path} alt="" />
-                    </div> */}
                     <div onClick={handleMovieClick} className='movieRow m-3 rounded shadow-lg'>
                     <img src={imageUrl + movie.backdrop_path} alt="" />
                     <div className="px-3 movieDetails">
@@ -37,7 +25,4 @@ function RowMovieSearch({ movie }) {
     )
 }
 
-export default RowMovieSearch
-
-
-
+export default RowMovieSearch;

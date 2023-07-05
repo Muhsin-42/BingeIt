@@ -1,15 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react'
+import  { useState,  useEffect } from 'react'
 import './chat.scss'
 import CreateGroup from './CreateGroup';
 import axios from '../../utils/axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGroups, addGroup, pushMessages } from '../../Redux/store';
+import { setGroups } from '../../Redux/store';
 import MessagesSection from './MessagesSection';
-import socket from '../../socket.io/socket.io';
-import { API_KEY } from '../../utils/constants';
-import { addDoc, collection, getDoc, getDocs, limit, onSnapshot, orderBy, query, serverTimestamp, where } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
-
 
 const CommunityChat = () => {
     const dispatch = useDispatch();
@@ -19,7 +16,6 @@ const CommunityChat = () => {
     const token = useSelector(state => state.token);
     const [selectedGroup, setSelectedGroup] = useState(null);
     const groups = useSelector(state => state.groups);
-
     const [isLeftMainVisible, setIsLeftMainVisible] = useState(true);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -91,16 +87,13 @@ const CommunityChat = () => {
         <div className='chatMain  shadow-lg'>
 
             {isMobileMenuOpen && (
-                <i class="bi bi-three-dots mt-3 mx-3 " onClick={toggleMobileMenu}></i>
+                <i className="bi bi-three-dots mt-3 mx-3 " onClick={toggleMobileMenu}></i>
             )}
 
             {isLeftMainVisible && (
                 <div className="left-main shadow-lg " style={{ position: 'relative' }}>
                     <div className="title fs-3">Communities</div>
                     <div className="channels ">
-                        {
-                            console.log('grous',groups)
-                        }
                         {
                             Array.isArray(groups) &&
                             groups?.map((group, index) => {
@@ -140,4 +133,4 @@ const CommunityChat = () => {
     )
 }
 
-export default CommunityChat
+export default CommunityChat;

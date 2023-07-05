@@ -31,7 +31,6 @@ function PostsList() {
             dispatch(setReports({ reports: response.data }))
           })
           .catch((error) => {
-            console.log("inside catch");
             console.log(error);
           });
     };

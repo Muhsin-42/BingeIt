@@ -2,19 +2,14 @@
     margin-left: 20px;
     color: #fff;
 }
-
 .posters{
     display: flex;
     padding: 20px;
     overflow-x: scroll;
-    // overflow-y:hidden ;
 }
-
 .posters::-webkit-scrollbar{
     display: none;
 }
-
-
 .poster{
     box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.2); 
     max-height: 250px;
@@ -28,7 +23,6 @@
     margin : 0 15px;
     filter: brightness(70%);
 }
-
 .smallPoster{
     max-height: 100PX;
 }

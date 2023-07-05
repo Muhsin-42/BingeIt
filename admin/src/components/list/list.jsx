@@ -1,16 +1,9 @@
 import "./list.scss";
 import { getAllPoster } from "../../utils/Constants";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../../utils/axios";
-import React,{ useCallback } from "react";
-import Box from '@mui/material/Box';
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+import { Box, Card, CardMedia, CardActions, CardContent }  from '@mui/material';
+import { DeleteIcon, EditIcon } from "@mui/icons-material";
 
 const PosterList = () => {
   const [poster, getPoster] = useState([]);
@@ -25,7 +18,6 @@ const PosterList = () => {
         getPoster(response.data);
       })
       .catch((error) => {
-        console.log("inside catch");
         console.log(error);
       });
   };
@@ -34,30 +26,11 @@ const PosterList = () => {
   return (
     <div className="news">
       <div className="newContainers">
-        {/* <Box sx={{ display: "flex", flexWrap: "wrap",justifyContent:"space-between" }}>
-          {poster.map((pos,index) => {
-            return (
-              <Card key={index} sx={{ maxWidth: 600,maxHeight:400, flexBasis: "100%" }}>
-                <CardMedia
-                  sx={{ height: 350, width: 600 }}
-                  image={pos.posterImageUrl}
-                  title="green iguana"
-                />
-              </Card>
-            );
-          })}
-        </Box> */}
         <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {poster.map((pos,index) => {
             return (
-              <Box
-                key={index}
-                sx={{
-                  width: ["100%", "50%", "33.33%", "50%"], // responsive width, 4 cards per row
-                  p: 2,
-                  m: 2,
-                }}
-              >
+              <Box key={index}
+                sx={{ width: ["100%", "50%", "33.33%", "50%"], p: 2, m: 2 }}>
                 <Card sx={{ maxWidth: 500 }}>
                   <CardMedia
                     sx={{ height: 400, width: 500 }}
@@ -87,6 +60,3 @@ const PosterList = () => {
 };
 
 export default PosterList;
-
-
-   

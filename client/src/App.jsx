@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import routes from './routes/routes'
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { baseUrl } from './utils/constants';
 import socket from './socket.io/socket.io';
 import { setLogout } from './Redux/store';
 
