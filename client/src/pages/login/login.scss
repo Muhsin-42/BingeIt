@@ -51,8 +51,6 @@
       p {
         margin: 0;
       }
-      span {
-      }
       button {
         background-color: white;
         color: rebeccapurple;
@@ -90,9 +88,13 @@
           background-color: rebeccapurple;
           color: white;
           font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
         }
       }
-      span {
+      .register-txt {
         @media (min-width: 700px) {
           display: none;
         }

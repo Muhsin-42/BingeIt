@@ -1,7 +1,9 @@
 .register {
   background-color: #c1beff;
-  // display: flex;
-  // align-items: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
   // justify-content: center;
   .registerCard {
     margin: auto;
@@ -9,12 +11,15 @@
     @media (max-width: 1200px) {
       width: 70%;
     }
+
     @media (max-width: 950px) {
       width: 90%;
     }
+
     @media (max-width: 700px) {
       width: 70%;
     }
+
     @media (max-width: 400px) {
       width: 90%;
     }
@@ -48,11 +53,11 @@
         font-size: 80px;
         line-height: 100px;
       }
+
       p {
         margin: 0;
       }
-      span {
-      }
+
       button {
         background-color: white;
         color: rebeccapurple;
@@ -75,6 +80,7 @@
       h1 {
         margin: 0;
       }
+
       form {
         // background-color: green;
         margin: 0;
@@ -89,9 +95,11 @@
           border-bottom: 1px solid lightgray;
           padding: 8px 10px;
         }
+
         input:focus {
           outline: none;
         }
+
         button {
           margin-top: 20px;
           width: 100%;
@@ -99,13 +107,19 @@
           background-color: rebeccapurple;
           color: white;
           font-weight: bold;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
         }
       }
-      // span{
-      //     @media (min-width: 700px) {
-      //         display: none;
-      //     }
-      // }
+
+      .login-txt {
+        @media (min-width: 700px) {
+          display: none;
+        }
+      }
     }
   }
 }

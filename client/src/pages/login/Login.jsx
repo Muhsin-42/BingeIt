@@ -1,17 +1,24 @@
 import "./login.scss";
-import { useState } from "react";
+import  { useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from "../../utils/axios";
 import { loginPost } from "../../utils/constants";
 import { setUser, setToken } from "../../Redux/store";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Login = () => {
   const [datas, setDatas] = useState({ email: "", password: "" });
   // const [error, setError] = useState("");
   const [loginError, setLoginError] = useState(false);
   const dispatch = useDispatch();
+const Login = () => {
+	const [datas, setDatas] = useState({ email: "", password: "" });
+	const [error, setError] = useState("");
+	const [loginError, setLoginError] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const dispatch = useDispatch();
 
   const notifyLoginError = (error) =>
     toast.error(error, {
@@ -24,6 +31,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+		setLoading(true)
+
     try {
       const url = loginPost;
       const { data } = await axios.post(url, datas);
@@ -39,6 +49,8 @@ const Login = () => {
         setLoginError(true);
         notifyLoginError(error.response.data.message);
       }
+		} finally {
+			setLoading(false)
     }
   };
 
@@ -83,10 +95,13 @@ const Login = () => {
               required
             />
             <button className="btn" type="submit">
-              Login
-            </button>
+              
+							{loading && <CircularProgress size={'15px'} sx={{ color: "white" }} />}
+							Login
+            
+						</button>
           </form>
-          <span>
+          <span className="register-txt">
             {`Don't have an account?`}
             <Link to="/register">register</Link>
           </span>
