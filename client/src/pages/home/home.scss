@@ -1,35 +1,31 @@
-    .explore{
-        color: white;
-        h1{
-            color: white;
-            font-weight: bolder;
-            font-size: 40px;
-        }
+.explore {
+  color: white;
+  h1 {
+    color: white;
+    font-weight: bolder;
+    font-size: 40px;
+  }
 
-        .languages{
-            // background-color: red;
-            display: flex;
-            overflow: scroll;
-            margin-left: 20px;
-            margin-right: 20px;
+  .languages {
+    // background-color: red;
+    display: flex;
+    overflow: scroll;
+    margin-left: 20px;
+    margin-right: 20px;
 
-
-            img{
-                width: 220px;
-                height: 124px;
-                border-radius: 10px;
-                cursor: pointer;
-            }
-            img:hover{
-                transform: scale(1.2);
-                transition: 0.3s;
-                filter: brightness(60%);
-            }
-        }
-        .languages::-webkit-scrollbar{
-            display: none;
-        }
-
-
-        
+    img {
+      width: 220px;
+      height: 124px;
+      border-radius: 10px;
+      cursor: pointer;
     }
+    img:hover {
+      transform: scale(1.2);
+      transition: 0.3s;
+      filter: brightness(60%);
+    }
+  }
+  .languages::-webkit-scrollbar {
+    display: none;
+  }
+}

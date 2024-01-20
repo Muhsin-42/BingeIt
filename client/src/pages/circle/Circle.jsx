@@ -1,12 +1,12 @@
-import { Posts, AddPost } from '../../component'
+import { Posts, AddPost } from "../../component";
 
 function Circle() {
   return (
     <div>
-      <Posts/>
-      <AddPost/>
+      <Posts />
+      <AddPost />
     </div>
-  )
+  );
 }
 
-export default Circle
+export default Circle;

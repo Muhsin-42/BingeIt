@@ -11,19 +11,17 @@
 //     border: 1px solid gray;
 // }
 
-
-
-.errorMessage{
-    font-size: 12px;
-    padding: 3px;
-    color: red;
-    display: none;
+.errorMessage {
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+  display: none;
 }
 
-input:invalid[focused="true"]{
-    border: 1px solid red;
+input:invalid[focused="true"] {
+  border: 1px solid red;
 }
 
-input:invalid[focused="true"] ~ span{
-    display: block;
+input:invalid[focused="true"] ~ span {
+  display: block;
 }

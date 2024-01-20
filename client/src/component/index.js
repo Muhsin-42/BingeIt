@@ -9,20 +9,20 @@ import Comment from "./postCard/Comments";
 import PostCard from "./postCard/PostCard";
 import Posts from "./postCard/Posts";
 
-
 import RowMovies from "./rowMovies/RowMovies";
-import RowMoviesWide from './rowMoviesWide/RowMoviesWide'
-import UserRow from './userRow/UserRow'
-export { BigMovieList 
-    ,EmailVerify 
-    ,LeftBar 
-    ,NavBar 
-    ,PostCard 
-    ,AddPost 
-    ,CommentCard 
-    ,Comment 
-    ,Posts 
-    ,RowMovies 
-    ,RowMoviesWide
-    ,UserRow
+import RowMoviesWide from "./rowMoviesWide/RowMoviesWide";
+import UserRow from "./userRow/UserRow";
+export {
+  BigMovieList,
+  EmailVerify,
+  LeftBar,
+  NavBar,
+  PostCard,
+  AddPost,
+  CommentCard,
+  Comment,
+  Posts,
+  RowMovies,
+  RowMoviesWide,
+  UserRow,
 };
