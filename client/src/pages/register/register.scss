@@ -1,136 +1,133 @@
 .register {
+  background-color: #c1beff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 
-    background-color: #c1beff;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+  // justify-content: center;
+  .registerCard {
+    margin: auto;
 
-    // justify-content: center;
-    .registerCard {
-        margin: auto;
-
-        @media (max-width:1200px) {
-            width: 70%;
-        }
-
-        @media (max-width:950px) {
-            width: 90%;
-        }
-
-        @media(max-width : 700px) {
-            width: 70%;
-        }
-
-        @media(max-width : 400px) {
-            width: 90%;
-        }
-
-
-
-        background-color: white;
-        display: flex;
-        flex-direction: row-reverse;
-        width: 50%;
-        border-radius: 10px;
-        overflow: hidden;
-        min-height: 500px;
-
-        .left {
-            @media (max-width: 700px) {
-                display: none;
-            }
-
-            flex: 1;
-
-            background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-            url('https://i.pinimg.com/564x/09/a5/73/09a573ede3f8ae84c6f8657a50f8722d.jpg');
-            background-size: cover;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            color: white;
-
-            h1 {
-                margin: 0;
-                font-size: 80px;
-                line-height: 100px;
-            }
-
-            p {
-                margin: 0;
-            }
-
-            button {
-                background-color: white;
-                color: rebeccapurple;
-                font-weight: bold;
-            }
-        }
-
-        .right {
-            @media (max-width: 600px) {
-                padding: 20px;
-            }
-
-            flex: 1;
-            padding: 50px;
-            // display: flex;
-            // justify-content: center;
-            // flex-direction: column;
-            // gap: 20px;
-
-            h1 {
-                margin: 0;
-            }
-
-            form {
-                // background-color: green;
-                margin: 0;
-                // display: flex;
-                // flex-direction: column;
-                // gap: 20px;
-
-                input {
-                    width: 100%;
-                    margin-top: 20px;
-                    border: none;
-                    border-bottom: 1px solid lightgray;
-                    padding: 8px 10px;
-                }
-
-                input:focus {
-                    outline: none;
-                }
-
-                button {
-                    margin-top: 20px;
-                    width: 100%;
-                    padding: 10px;
-                    background-color: rebeccapurple;
-                    color: white;
-                    font-weight: bold;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                }
-            }
-
-            .login-txt {
-                @media (min-width: 700px) {
-                    display: none;
-                }
-            }
-        }
+    @media (max-width: 1200px) {
+      width: 70%;
     }
+
+    @media (max-width: 950px) {
+      width: 90%;
+    }
+
+    @media (max-width: 700px) {
+      width: 70%;
+    }
+
+    @media (max-width: 400px) {
+      width: 90%;
+    }
+
+    background-color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 50%;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 500px;
+
+    .left {
+      @media (max-width: 700px) {
+        display: none;
+      }
+
+      flex: 1;
+
+      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("https://i.pinimg.com/564x/09/a5/73/09a573ede3f8ae84c6f8657a50f8722d.jpg");
+      background-size: cover;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      color: white;
+
+      h1 {
+        margin: 0;
+        font-size: 80px;
+        line-height: 100px;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      button {
+        background-color: white;
+        color: rebeccapurple;
+        font-weight: bold;
+      }
+    }
+
+    .right {
+      @media (max-width: 600px) {
+        padding: 20px;
+      }
+
+      flex: 1;
+      padding: 50px;
+      // display: flex;
+      // justify-content: center;
+      // flex-direction: column;
+      // gap: 20px;
+
+      h1 {
+        margin: 0;
+      }
+
+      form {
+        // background-color: green;
+        margin: 0;
+        // display: flex;
+        // flex-direction: column;
+        // gap: 20px;
+
+        input {
+          width: 100%;
+          margin-top: 20px;
+          border: none;
+          border-bottom: 1px solid lightgray;
+          padding: 8px 10px;
+        }
+
+        input:focus {
+          outline: none;
+        }
+
+        button {
+          margin-top: 20px;
+          width: 100%;
+          padding: 10px;
+          background-color: rebeccapurple;
+          color: white;
+          font-weight: bold;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+      }
+
+      .login-txt {
+        @media (min-width: 700px) {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 .form-error {
-    // min-height: max-content;
-    // background-color: red;
-    color: red;
-    padding-left: 10px;
-    margin: 0;
+  // min-height: max-content;
+  // background-color: red;
+  color: red;
+  padding-left: 10px;
+  margin: 0;
 }

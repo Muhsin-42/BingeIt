@@ -4,6 +4,7 @@ export const DarkModeContext = createContext();
 
 export const DarkModeContextProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(
+    // eslint-disable-next-line no-undef
     JSON.parse(localStorage.getItem("darkMode")) || false
   );
 
@@ -12,6 +13,7 @@ export const DarkModeContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line no-undef
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 

@@ -1,14 +1,13 @@
-
 .home-container {
   width: 100%;
   @media (min-width: 790px) {
-      margin-left: 250px; /* adjust this value to match the width of your leftbar */
-      display: block;
-      width: calc(100% - 200px); /* subtract the width of the leftbar from the container's total width */
-      
+    margin-left: 250px; /* adjust this value to match the width of your leftbar */
+    display: block;
+    width: calc(
+      100% - 200px
+    ); /* subtract the width of the leftbar from the container's total width */
   }
   @media (max-width: 790px) {
-      margin-top: 70px;
+    margin-top: 70px;
   }
-
 }

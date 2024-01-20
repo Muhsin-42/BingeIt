@@ -1,102 +1,86 @@
-const express =   require("express");
-const mongoose =  require("mongoose");
+const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
-const helmet =  require("helmet");
-const dotenv =  require('dotenv')
-const morgan =  require("morgan");
-const {Server} = require("socket.io")
-const userRoute = require('./routes/users')
-const adminRoute = require('./routes/admin')
-const authRoute = require('./routes/auth')
-const postRoute = require('./routes/posts')
-const chatRoute = require('./routes/chat')
-const notificationRoute = require('./routes/notification')
-const router = require('express').Router();
+const helmet = require("helmet");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const { Server } = require("socket.io");
+const userRoute = require("./routes/users");
+const adminRoute = require("./routes/admin");
+const authRoute = require("./routes/auth");
+const postRoute = require("./routes/posts");
+const chatRoute = require("./routes/chat");
+const notificationRoute = require("./routes/notification");
+const router = require("express").Router();
 const notificationController = require("./controllers/notificationController");
 
 const app = express();
-dotenv.config()
+dotenv.config();
 
 //Database
-mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true})
-.then(()=>{
-    console.log('Database Connected Successfully')
-})
-.catch((err)=>{
-    console.log('err = ',err.message)
-}) 
+mongoose
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true })
+  .then(() => {
+    console.log("Database Connected Successfully");
+  })
+  .catch((err) => {
+    console.log("err = ", err.message);
+  });
 
 //Middleware
-app.use(express.json())
-app.use(cors());
-app.use(helmet())
-app.use(morgan('common'))
+app.use(express.json());
+app.use(cors({ origin: "*" }));
+app.use(helmet());
+app.use(morgan("common"));
 
 // routes
-app.use('/',(req,res)=>{
-  console.log('Hello world ');
-  res.send('belcome to binginstaan')
-})
-app.use('/api/user',userRoute)
-app.use('/api/post',postRoute)
-app.use('/api/auth',authRoute)
-app.use('/api/notification',notificationRoute)
-app.use('/api/admin',adminRoute)
-app.use('/api/chat',chatRoute)
-
-
+// app.use("/", (req, res) => {
+//   console.log("Hello world ");
+//   res.send("belcome to binginstaan");
+// });
+app.use("/api/user", userRoute);
+app.use("/api/post", postRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/notification", notificationRoute);
+app.use("/api/admin", adminRoute);
+app.use("/api/chat", chatRoute);
 
 const server = app.listen(process.env.PORT, () => {
   console.log(`Server is ready at ${process.env.PORT}`);
 });
 
-
 // Socket
-const io = new Server(server, { cors: { origin: '*' } });
+const io = new Server(server, { cors: { origin: "*" } });
 module.exports = io;
-    // Socket.io connection handling
-    io.on('connection', (socket) => {
+// Socket.io connection handling
+io.on("connection", (socket) => {
+  // add user to online users array on connection
+  socket.on("newUser", (userId) => {
+    addUser(userId, socket.id);
+  });
 
-    // add user to online users array on connection
-    socket.on('newUser', (userId) => {
-      addUser(userId, socket.id);
-    });
+  socket.on("sendNotification", (data) => {
+    const receiver = getUser(data.receiverId);
+    if (receiver) {
+      io.to(receiver.socketId).emit("getNotification", data);
+    }
+  });
 
-    socket.on('sendNotification', (data)=>{
-        const receiver = getUser(data.receiverId)
-        if (receiver) {
-          io.to(receiver.socketId).emit('getNotification', data);
-        }
-    });
+  socket.on("sendMessage", (data) => {
+    socket.broadcast.emit("receiveMessage", data);
+  });
 
-    socket.on("sendMessage",(data)=>{
-      socket.broadcast.emit('receiveMessage', data);
-    })
+  socket.on("setBlocked", (data) => {
+    const receiver = getUser(data.receiverId);
+    if (receiver) {
+      io.to(receiver.socketId).emit("getBlocked");
+    }
+  });
 
-
-    socket.on("setBlocked",(data)=>{
-      const receiver = getUser(data.receiverId)
-      if(receiver){
-        io.to(receiver.socketId).emit('getBlocked');
-      }
-    })
-
-    socket.on('disconnect', () => {
-      removeUser(socket.id);
-    });
+  socket.on("disconnect", () => {
+    removeUser(socket.id);
+  });
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 // helper functions for managing online users array
 let onlineUsers = [];
@@ -111,7 +95,6 @@ const removeUser = (socketId) => {
   onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
 };
 
-
-const getUser = (userId) =>{
-  return onlineUsers.find(user => user._id == userId); 
-}
+const getUser = (userId) => {
+  return onlineUsers.find((user) => user._id == userId);
+};
