@@ -60,6 +60,7 @@ function ReviewSection({ movieDetails, currentUser }) {
       </div>
       <div className="reviewCards">
         {movieDetails &&
+          Array.isArray(reviews) &&
           reviews?.map((review) => (
             <ReviewCard
               key={review?._id}
