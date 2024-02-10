@@ -8,7 +8,7 @@ function RowMovieSearch({ movie }) {
     Navigate(`/movie/${movie.title}/${movie.id}`);
   };
   return (
-    <div className="movieRowMain">
+    <div className="movieRowMain scale-105-3s">
       {movie.backdrop_path && (
         <>
           <div

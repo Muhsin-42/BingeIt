@@ -9,7 +9,10 @@ import { ToastContainer, toast } from "react-toastify";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const Login = () => {
-  const [datas, setDatas] = useState({ email: "", password: "" });
+  const [datas, setDatas] = useState({
+    email: "muhsin@gmail.com",
+    password: "Pa$$w0rd!",
+  });
   const [loginError, setLoginError] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();

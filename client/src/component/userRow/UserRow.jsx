@@ -21,7 +21,7 @@ function UserRow({ user, handleUserClick }) {
   };
 
   return (
-    <div className="UserRowMain">
+    <div className="UserRowMain scale-105-3s">
       <div
         className="userRow m-3 shadow-lg rounded p-2"
         onClick={() => handleUserClick(user._id)}

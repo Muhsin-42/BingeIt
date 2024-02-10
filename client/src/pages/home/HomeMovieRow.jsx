@@ -26,14 +26,15 @@ function RowMovies(props) {
       <div className="posters">
         {movies.map((movie) => {
           return (
-            <LazyLoadImage
-              effect="blur"
-              onClick={() => handleMovieClick(movie)}
-              className="poster"
-              key={movie.id}
-              src={imageUrl + movie.poster_path}
-              alt="Movie poster"
-            />
+            <div className="posterDiv" key={movie.id}>
+              <LazyLoadImage
+                className="poster"
+                effect="blur"
+                onClick={() => handleMovieClick(movie)}
+                src={imageUrl + movie.poster_path}
+                alt="Movie poster"
+              />
+            </div>
           );
         })}
       </div>

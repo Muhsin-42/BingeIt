@@ -33,7 +33,7 @@ function RowMovies(props) {
             <div
               key={movie.id}
               onClick={() => handleMovieClick(movie)}
-              className="movieDiv"
+              className="movieDiv scale-105"
             >
               <LazyLoadImage
                 effect="blur"

@@ -28,24 +28,41 @@ function Explore() {
 
       <h1 className="m-4 mb-0">Watch in your Languages</h1>
       <div className="languages p-2">
-        <Link to="/language/en">
-          <LazyLoadImage effect="blur" className="m-2" src={english} alt="" />
-        </Link>
-        <Link to="/language/hi">
-          <LazyLoadImage effect="blur" className="m-2" src={hindi} alt="" />
-        </Link>
-        <Link to="/language/ml">
-          <LazyLoadImage effect="blur" className="m-2" src={malayalam} alt="" />
-        </Link>
-        <Link to="/language/kn">
-          <LazyLoadImage effect="blur" className="m-2" src={kannada} alt="" />
-        </Link>
-        <Link to="/language/ta">
-          <LazyLoadImage effect="blur" className="m-2" src={tamil} alt="" />
-        </Link>
-        <Link to="/language/te">
-          <LazyLoadImage effect="blur" className="m-2" src={telgu} alt="" />
-        </Link>
+        <div className="scale-115">
+          <Link to="/language/en">
+            <LazyLoadImage effect="blur" className="m-2" src={english} alt="" />
+          </Link>
+        </div>
+        <div className="scale-115">
+          <Link to="/language/hi">
+            <LazyLoadImage effect="blur" className="m-2" src={hindi} alt="" />
+          </Link>
+        </div>
+        <div className="scale-115">
+          <Link to="/language/ml">
+            <LazyLoadImage
+              effect="blur"
+              className="m-2"
+              src={malayalam}
+              alt=""
+            />
+          </Link>
+        </div>
+        <div className="scale-115">
+          <Link to="/language/kn">
+            <LazyLoadImage effect="blur" className="m-2" src={kannada} alt="" />
+          </Link>
+        </div>
+        <div className="scale-115">
+          <Link to="/language/ta">
+            <LazyLoadImage effect="blur" className="m-2" src={tamil} alt="" />
+          </Link>
+        </div>
+        <div className="scale-115">
+          <Link to="/language/te">
+            <LazyLoadImage effect="blur" className="m-2" src={telgu} alt="" />
+          </Link>
+        </div>
       </div>
 
       <HomeMOvieRow title="Action Movies" url={ActionMovies}></HomeMOvieRow>
