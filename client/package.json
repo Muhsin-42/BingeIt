@@ -57,6 +57,7 @@
     "timeago.js": "^1.0.6",
     "universal-cookie": "^4.0.4",
     "uui": "^1.0.7",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4",
     "yup": "^1.0.2"
   },
