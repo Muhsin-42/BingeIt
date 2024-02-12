@@ -1,6 +1,7 @@
 import "./rowMovieSearch.scss";
 import { imageUrl } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function RowMovieSearch({ movie }) {
   const Navigate = useNavigate();
@@ -15,7 +16,12 @@ function RowMovieSearch({ movie }) {
             onClick={handleMovieClick}
             className="movieRow m-3 rounded shadow-lg"
           >
-            <img src={imageUrl + movie.backdrop_path} alt="" />
+            <img />
+            <LazyLoadImage
+              effect="blur"
+              src={imageUrl + movie.backdrop_path}
+              alt="Movie Poster"
+            />
             <div className="px-3 movieDetails">
               <h4>{movie.title}</h4>
               <span className="font-weight-bold">{movie?.release_date}</span>

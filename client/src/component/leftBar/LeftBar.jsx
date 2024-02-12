@@ -32,9 +32,11 @@ function LeftBar() {
 
   useEffect(() => {
     setNotificationsCount((prev) => 0);
-    notifications?.forEach((notification) => {
-      if (!notification.read) setNotificationsCount((prev) => ++prev);
-    });
+    if (Array.isArray(notifications)) {
+      notifications?.forEach((notification) => {
+        if (!notification.read) setNotificationsCount((prev) => ++prev);
+      });
+    }
   }, [notifications]);
 
   const getNotifications = async () => {

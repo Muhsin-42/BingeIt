@@ -20,6 +20,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const style = {
   position: "absolute",
@@ -183,7 +184,11 @@ function PostCard({ post, getAllPosts }) {
       <ToastContainer autoClose={1300} />
       <div className="level1">
         <div className="set1 d-flex">
-          <img src={post?.author?.profilePicture} alt="" />
+          <LazyLoadImage
+            effect="blur"
+            src={post?.author?.profilePicture}
+            alt="Profile Pic"
+          />
           <div
             className="nameUsername mx-2 d-flex "
             style={{ flexDirection: "column" }}
@@ -201,7 +206,7 @@ function PostCard({ post, getAllPosts }) {
 
       {post?.image !== "" && (
         <div className="level3">
-          <img src={post?.image} alt="" />
+          <LazyLoadImage effect="blur" src={post?.image} alt="Image" />
         </div>
       )}
 
@@ -279,7 +284,11 @@ function PostCard({ post, getAllPosts }) {
       {showComments && (
         <div className="level5">
           <div className="set1">
-            <img src={currentUser.profilePicture} alt="" />
+            <LazyLoadImage
+              effect="blur"
+              src={currentUser.profilePicture}
+              alt="Image"
+            />
           </div>
           <div className="set2">
             <input
@@ -298,9 +307,9 @@ function PostCard({ post, getAllPosts }) {
         </div>
       )}
       {showComments &&
-        post?.comments?.map((comment) => {
-          return <CommentCard key={comment._id} comment={comment} />;
-        })}
+        post?.comments?.map((comment) => (
+          <CommentCard key={comment._id} comment={comment} />
+        ))}
 
       <AddPost />
     </div>

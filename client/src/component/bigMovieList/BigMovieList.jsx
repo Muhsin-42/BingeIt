@@ -1,6 +1,7 @@
 import "./bigMovieList.scss";
 import { imageUrl } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const BigMovieList = ({ title, movies }) => {
   const Navigate = useNavigate();
@@ -15,12 +16,13 @@ const BigMovieList = ({ title, movies }) => {
       <div className="moviePosters  d-flex align-content-center align-content-stretch flex-wrap">
         {movies?.map((movie) => {
           return (
-            <img
-              onClick={() => handleMovieClick(movie)}
+            <LazyLoadImage
+              effect="blur"
+              className="poster"
               key={movie.id}
-              className="moviePoster cold dol-lg-2 "
+              onClick={() => handleMovieClick(movie)}
               src={imageUrl + movie.poster_path}
-              alt="Movie Poster"
+              alt="Movie poster"
             />
           );
         })}

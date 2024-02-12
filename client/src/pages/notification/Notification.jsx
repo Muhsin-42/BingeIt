@@ -67,27 +67,29 @@ function Notification() {
   return (
     <div>
       <h1 className="text-secondary m-5">Unread Notifications</h1>
-      {notifications?.map((notification) => {
-        return (
-          !notification.read && (
-            <NotificationCard
-              key={notification._id}
-              notification={notification}
-            />
-          )
-        );
-      })}
+      {Array.isArray(notifications) &&
+        notifications?.map((notification) => {
+          return (
+            !notification.read && (
+              <NotificationCard
+                key={notification._id}
+                notification={notification}
+              />
+            )
+          );
+        })}
       <h1 className="text-secondary mx-5">Read Notifications</h1>
-      {notifications?.map((notification) => {
-        return (
-          notification.read && (
-            <NotificationCard
-              key={notification._id}
-              notification={notification}
-            />
-          )
-        );
-      })}
+      {Array.isArray(notifications) &&
+        notifications?.map((notification) => {
+          return (
+            notification.read && (
+              <NotificationCard
+                key={notification._id}
+                notification={notification}
+              />
+            )
+          );
+        })}
     </div>
   );
 }
