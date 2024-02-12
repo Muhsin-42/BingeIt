@@ -1,0 +1,17 @@
+node_modules
+# ./node_modules
+# .gitignore
+# .prettierignore
+# .prettierrc
+
+# *.env
+# .env
+# .env.*
+
+# /.vscode
+./dist
+dist
+# netlify.toml
+# package.json
+# package-lock.json
+# vite.config.json
