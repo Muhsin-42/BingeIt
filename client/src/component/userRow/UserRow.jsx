@@ -2,6 +2,7 @@ import React from "react";
 import "./userRow.scss";
 import Avatar from "@mui/material/Avatar";
 import { blue, green, pink, yellow } from "@mui/material/colors";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function UserRow({ user, handleUserClick }) {
   const stringAvatar = (name) => {
@@ -28,10 +29,11 @@ function UserRow({ user, handleUserClick }) {
       >
         <div className="left">
           {user?.profilePicture !== "" ? (
-            <img
+            <LazyLoadImage
               style={{ borderRadius: "50%" }}
+              effect="blur"
               src={user?.profilePicture}
-              alt=""
+              alt="Profile Pic"
             />
           ) : (
             <Avatar {...stringAvatar(`${user?.name}`)} />

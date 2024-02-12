@@ -11,6 +11,7 @@ import { setUser } from "../../Redux/store";
 import movieTrailer from "movie-trailer";
 import Modal from "react-modal";
 import ReviewSection from "./ReviewSection";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function SingleMovie() {
   const dispatch = useDispatch();
@@ -159,17 +160,20 @@ function SingleMovie() {
     <>
       <div className="singleMoviePage">
         <div className="movieBackdrop">
-          <img src={imageUrl + movieDetails?.backdrop_path} alt="" />
+          <LazyLoadImage
+            effect="blur"
+            src={imageUrl + movieDetails?.backdrop_path}
+            alt="Movie Poster"
+          />
         </div>
         <div className="mainContents">
           <div className="left ">
-            {/* <div className=" bg-dark moviePoster shadow"> */}
-            <img
+            <LazyLoadImage
+              effect="blur"
+              alt="Movie Poster"
               className="bg-dark"
               src={imageUrl + movieDetails?.poster_path}
-              alt=""
             />
-            {/* </div> */}
           </div>
           <div className="right  ">
             <h1 className="text-white ">
