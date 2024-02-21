@@ -1,26 +1,26 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Outlet } from "react-router-dom";
 
 // Components
-import NavBar from "../component/navBar/NavBar";
-import LeftBar from "../component/leftBar/LeftBar";
 import Home from "../pages/home/Home";
-import Discover from "../pages/discover/Discover";
-import Trending from "../pages/trending/Trending";
-import Watchlist from "../pages/watchlist/Watchlist";
-import LanguageMovies from "../pages/languageMovies/LanguageMovies";
-import Circle from "../pages/circle/Circle";
-import PageNotFound from "../pages/pageNotFound/PageNotFound";
-import SingleMovie from "../pages/singleMovie/SingleMovie";
-import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
-import EmailVerify from "../component/emailVerify/EmailVerify";
+
+import { EmailVerify, LeftBar, NavBar } from "../component";
 import ProtectedLayout from "./ProtectedLayout";
 import UnProtectedLayout from "./UnProtectedLayout";
-import Profile from "../pages/profile/Profile";
-import Notification from "../pages/notification/Notification";
-import CommunityChat from "../pages/Community/CommunityChat";
-
+const Login = lazy(() => import("../pages/login/Login"));
+const Register = lazy(() => import("../pages/register/Register"));
+const Discover = lazy(() => import("../pages/discover/Discover"));
+const Trending = lazy(() => import("../pages/trending/Trending"));
+const Watchlist = lazy(() => import("../pages/watchlist/Watchlist"));
+const LanguageMovies = lazy(
+  () => import("../pages/languageMovies/LanguageMovies")
+);
+const Circle = lazy(() => import("../pages/circle/Circle"));
+const PageNotFound = lazy(() => import("../pages/pageNotFound/PageNotFound"));
+const SingleMovie = lazy(() => import("../pages/singleMovie/SingleMovie"));
+const Profile = lazy(() => import("../pages/profile/Profile"));
+const Notification = lazy(() => import("../pages/notification/Notification"));
+const CommunityChat = lazy(() => import("../pages/Community/CommunityChat"));
 const Layout = () => {
   return (
     <div>
@@ -59,39 +59,75 @@ const routes = [
       },
       {
         path: "/discover",
-        element: <Discover />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Discover />
+          </Suspense>
+        ),
       },
       {
         path: "/trending",
-        element: <Trending />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Trending />
+          </Suspense>
+        ),
       },
       {
         path: "/watchlist",
-        element: <Watchlist />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Watchlist />
+          </Suspense>
+        ),
       },
       {
         path: "/language/:language",
-        element: <LanguageMovies />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <LanguageMovies />
+          </Suspense>
+        ),
       },
       {
         path: "/notification",
-        element: <Notification />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Notification />
+          </Suspense>
+        ),
       },
       {
         path: "/circle",
-        element: <Circle />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Circle />
+          </Suspense>
+        ),
       },
       {
         path: "/community",
-        element: <CommunityChat />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <CommunityChat />
+          </Suspense>
+        ),
       },
       {
         path: "/profile/:id",
-        element: <Profile />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Profile />
+          </Suspense>
+        ),
       },
       {
         path: "/movie/:movieName/:movieId",
-        element: <SingleMovie></SingleMovie>,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <SingleMovie />
+          </Suspense>
+        ),
       },
     ],
   },
@@ -99,7 +135,9 @@ const routes = [
     path: "/login",
     element: (
       <UnProtectedLayout>
-        <Login />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Login />
+        </Suspense>
       </UnProtectedLayout>
     ),
   },
@@ -107,7 +145,9 @@ const routes = [
     path: "/register",
     element: (
       <UnProtectedLayout>
-        <Register />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Register />
+        </Suspense>
       </UnProtectedLayout>
     ),
   },
