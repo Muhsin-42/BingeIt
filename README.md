@@ -1,5 +1,5 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=muhsin-42&label=Repo%20views&color=0e75b6&style=flat" alt="muhsin-42" /> </p>
-# Binge
+# Binge!
 
 Binge is a website that combines elements of IMDB and social media to create a platform where users can rate, comment, review, discuss movies, and share their opinions. Users can also add movies to their watched list, watchlist, and favorites. The website incorporates features such as pagination, lazy loading, community chat, and email verification. It also includes an admin panel for managing users, posts, reports, and monitoring activities.
 
